@@ -1,0 +1,267 @@
+openapi: 3.0.3
+info:
+  title: MDD Application API
+  version: 1.0.0
+  description: |-
+      This API for MDD Application allows users to access and modify their profile and subscriptions.
+      This API is used to connect MDD front and back End applications.
+      Some useful links:
+      - [The MDD Application repository](https://github.com/ThomasBTR/Developpez-une-application-full-stack-complete)
+    
+  termsOfService: https://mdd-application.com/terms/
+  contact:
+      email: thomas.berthomier.dev@gmail.com
+  license:
+      name: GNU General Public License v3.0
+      url: https://spdx.org/licenses/GPL-3.0-or-later.html
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /users:
+    get:
+      tags:
+        - user
+      summary: Retrieve user profile
+      responses:
+        '200':
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - user
+      summary: Update user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: User profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Invalid user profile data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/login:
+    post:
+      tags:
+        - auth
+      summary: Log in user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          description: User logged in successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Invalid login credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/register:
+    post:
+      tags:
+        - auth
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        '204':
+          description: User registered successfully
+        '400':
+          description: Invalid user registration data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /logout:
+    post:
+      tags:
+        - auth
+      summary: Log out user
+      responses:
+        '204':
+          description: User logged out successfully
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /subscriptions:
+    get:
+      tags:
+        - subscription
+      summary: Retrieve list of all available themes
+      responses:
+        '200':
+          description: List of themes retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeList'
+    post:
+      tags:
+          - subscription
+      summary: Subscribe to a theme
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionRequest'
+      responses:
+        '201':
+          description: Subscribed to theme successfully
+        '400':
+          description: Invalid subscription request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /subscriptions/{theme_id}:
+    delete:
+      tags:
+          - subscription
+      summary: Unsubscribe from a theme
+      parameters:
+        - in: path
+          name: theme_id
+          description: ID of the theme to unsubscribe from
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Unsubscribed from theme successfully
+        '400':
+          description: Invalid theme ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    UserRegistration:
+      type: object
+      properties:
+          username:
+            type: string
+          email:
+            type: string
+          password:
+            type: string
+    UserUpdate:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    UserProfile:
+      type: object
+      properties:
+          id:
+            type: integer
+            format: int64
+          username:
+            type: string
+          email:
+            type: string
+          password:
+            type: string
+          subscriptions:
+            type: array
+            items:
+                $ref: '#/components/schemas/ThemeList'
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+         type: string
+    Theme:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    ThemeList:
+      type: object
+      properties:
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Theme'
+    SubscriptionRequest:
+      type: object
+      properties:
+        themeId:
+          type: integer
+          format: int64
