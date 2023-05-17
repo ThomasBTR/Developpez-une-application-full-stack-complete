@@ -37,6 +37,23 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- JWT -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<!-- OpenApi -->
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
@@ -80,7 +97,6 @@
 							<generateApis>true</generateApis>
 							<modelPackage>com.openclassrooms.mddapi.models</modelPackage>
 							<apiPackage>com.openclassrooms.mddapi.api</apiPackage>
-							<modelNameSuffix>Dto</modelNameSuffix>
 							<output>${project.build.directory}/generated-sources</output>
 							<configOptions>
 								<dateLibrary>java8</dateLibrary>

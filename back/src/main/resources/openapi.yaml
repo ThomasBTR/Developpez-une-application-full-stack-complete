@@ -34,7 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
     put:
       tags:
         - user
@@ -57,57 +57,63 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Unauthorized access
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/login:
     post:
       tags:
         - auth
       summary: Log in user
+      operationId: loginUser
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
       responses:
         '200':
           description: User logged in successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/JwtResponse'
         '401':
           description: Invalid login credentials
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/register:
     post:
       tags:
         - auth
       summary: Register a new user
+      operationId: registerUser
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserRegistration'
+              $ref: '#/components/schemas/SignUpRequest'
       responses:
-        '204':
+        '201':
           description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpResponse'
         '400':
           description: Invalid user registration data
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
   /logout:
     post:
       tags:
@@ -121,7 +127,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
   /subscriptions:
     get:
       tags:
@@ -152,7 +158,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
   /subscriptions/{theme_id}:
     delete:
       tags:
@@ -174,13 +180,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Unauthorized access
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     User:
@@ -195,7 +201,7 @@ components:
           type: string
         password:
           type: string
-    UserRegistration:
+    SignUpRequest:
       type: object
       properties:
           username:
@@ -204,6 +210,11 @@ components:
             type: string
           password:
             type: string
+    SignUpResponse:
+        type: object
+        properties:
+            message:
+                type: string
     UserUpdate:
       type: object
       properties:
@@ -229,14 +240,28 @@ components:
             type: array
             items:
                 $ref: '#/components/schemas/ThemeList'
-    Login:
+    LoginRequest:
       type: object
       properties:
-        username:
+        email:
           type: string
         password:
           type: string
-    Error:
+    JwtResponse:
+      type: object
+      properties:
+          jwt:
+            type: string
+          type:
+            type: string
+          id:
+            type: integer
+            format: int64
+          username:
+            type: string
+          email:
+            type: string
+    ErrorResponse:
       type: object
       properties:
         code:
