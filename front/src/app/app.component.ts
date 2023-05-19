@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {AuthService} from './features/auth/services/auth.service';
+import {SessionService} from './services/session.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'front';
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private sessionService: SessionService) {
+  }
+
+  public $isLogged(): Observable<boolean> {
+    return this.sessionService.$isLogged();
+  }
+
+  public logout(): void {
+    this.sessionService.logOut();
+    this.router.navigate(['']).then(r => true);
+  }
 }
+

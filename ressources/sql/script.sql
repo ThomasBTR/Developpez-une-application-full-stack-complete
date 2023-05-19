@@ -19,4 +19,5 @@ CREATE TABLE `users` (
 
 
 INSERT INTO users (username, email, password, created_at, updated_at)
-VALUES ('Admin', 'yoga@studio.com', '$2a$10$.Hsa/ZjUVaHqi0tp9xieMeewrnZxrZ5pQRzddUXE/WjDu2ZThe6Iq', null, null);
+#  password: test!1234
+VALUES ('Admin', 'admin@mdd.com', '$2a$10$OrLIi.J1M2Y19h.QfIp3.e3BW7LxRuunsNHFQm.gnp60hwo.5fCci', null, null);
