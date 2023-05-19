@@ -14,8 +14,10 @@ info:
   license:
       name: GNU General Public License v3.0
       url: https://spdx.org/licenses/GPL-3.0-or-later.html
+
 servers:
   - url: http://localhost:8080/api
+
 paths:
   /users:
     get:
@@ -189,7 +191,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    User:
+    UserDto:
       type: object
       properties:
         id:

@@ -36,12 +36,14 @@ public class AuthController implements AuthApi {
     }
 
 
+    @Override
     @RequestMapping(
             method = RequestMethod.POST,
             value = "/auth/login",
             produces = {"application/json"},
             consumes = {"application/json"}
     )
+
     public ResponseEntity<JwtResponse> loginUser(
             @Parameter(name = "LoginRequest", description = "", required = true) @Valid @RequestBody LoginRequest loginRequest
     ) {
@@ -59,7 +61,7 @@ public class AuthController implements AuthApi {
                 .type("Bearer")
                 .id(userDetails.getId())
                 .email(userDetails.getUsername())
-                .username(user.getUsername()));
+                .username(null != user ? user.getUsername() : userDetails.getUsername()));
     }
 
     @RequestMapping(
@@ -68,18 +70,19 @@ public class AuthController implements AuthApi {
             produces = {"application/json"},
             consumes = {"application/json"}
     )
+    @Override
     public ResponseEntity<SignUpResponse> registerUser(
             @Parameter(name = "SignUpRequest", description = "", required = true) @Valid @RequestBody SignUpRequest signUpRequest
     ) {
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (Boolean.TRUE.equals(userRepository.existsByEmail(signUpRequest.getEmail()))) {
             return ResponseEntity.badRequest().body(new SignUpResponse().message("Error: Email is already in use!"));
         }
-        ;
         // Create new user's account
-        User user = new User()
+        User user = User.builder()
                 .username(signUpRequest.getUsername())
                 .email(signUpRequest.getEmail())
-                .password(passwordEncoder.encode(signUpRequest.getPassword()));
+                .password(passwordEncoder.encode(signUpRequest.getPassword()))
+                .build();
 
         userRepository.save(user);
 

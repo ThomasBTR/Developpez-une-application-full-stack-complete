@@ -12,3 +12,10 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         naming:
           physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+mdd:
+  app:
+    jwtSecret: openclassrooms #For test purpose only, pass this as parameter on production
+    jwtExpirationMs: 86400000 #For test purpose only, pass this as parameter on production
+server:
+  servlet:
+    context-path: '/api'
