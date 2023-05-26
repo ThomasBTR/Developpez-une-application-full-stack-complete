@@ -208,10 +208,14 @@ components:
       properties:
           username:
             type: string
+            x-field-extra-annotation: '@javax.validation.constraints.NotNull'
           email:
             type: string
+            x-field-extra-annotation: '@javax.validation.constraints.NotNull'
           password:
             type: string
+            x-field-extra-annotation: '@javax.validation.constraints.NotNull'
+            pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
     SignUpResponse:
         type: object
         properties:
@@ -251,8 +255,11 @@ components:
       properties:
         email:
           type: string
+          x-field-extra-annotation: '@javax.validation.constraints.NotNull'
         password:
           type: string
+          x-field-extra-annotation: '@javax.validation.constraints.NotNull'
+          pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
     JwtResponse:
       type: object
       properties:

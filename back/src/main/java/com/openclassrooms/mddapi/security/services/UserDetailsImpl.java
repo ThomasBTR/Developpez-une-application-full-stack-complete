@@ -21,10 +21,6 @@ public class UserDetailsImpl implements UserDetails {
 
   private String username;
 
-  private String firstName;
-
-  private String lastName;
-
   private Boolean admin;
 
   @JsonIgnore
@@ -32,7 +28,7 @@ public class UserDetailsImpl implements UserDetails {
 
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-      return new HashSet<GrantedAuthority>();
+      return new HashSet<>();
   }
 
   @Override

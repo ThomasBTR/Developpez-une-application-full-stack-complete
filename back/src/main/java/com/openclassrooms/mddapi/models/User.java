@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "USERS")
 @Table(name = "USERS", uniqueConstraints = {
@@ -50,5 +51,9 @@ public class User {
   @UpdateTimestamp
   @Column(name = "updated_at")
   private LocalDateTime updatedAt;
+
+  @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+  @ToString.Exclude
+  private List<ThemeEntity> subscriptions;
 
 }
