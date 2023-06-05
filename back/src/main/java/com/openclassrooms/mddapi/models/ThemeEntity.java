@@ -21,6 +21,6 @@ public class ThemeEntity {
     @ManyToOne(targetEntity = User.class)
     private long userId;
 
-    @Column(name = "name")
+    @Column(name = "title")
     private String name;
 }
