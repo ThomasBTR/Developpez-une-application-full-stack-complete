@@ -141,7 +141,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ThemeList'
+                $ref: '#/components/schemas/ThemeListResponse'
     post:
       tags:
           - subscription
@@ -249,7 +249,7 @@ components:
           subscriptions:
             type: array
             items:
-                $ref: '#/components/schemas/ThemeList'
+                $ref: '#/components/schemas/ThemeListResponse'
     LoginRequest:
       type: object
       properties:
@@ -288,9 +288,14 @@ components:
         id:
           type: integer
           format: int64
-        name:
+        title:
           type: string
-    ThemeList:
+        description:
+          type: string
+        userId:
+          type: integer
+          format: int64
+    ThemeListResponse:
       type: object
       properties:
         themes:

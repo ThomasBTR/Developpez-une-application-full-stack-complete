@@ -3,7 +3,7 @@ package com.openclassrooms.mddapi.services;
 import com.openclassrooms.mddapi.mappers.IThemeEntityToThemeMapper;
 import com.openclassrooms.mddapi.models.Theme;
 import com.openclassrooms.mddapi.models.ThemeEntity;
-import com.openclassrooms.mddapi.models.ThemeList;
+import com.openclassrooms.mddapi.models.ThemeListResponse;
 import com.openclassrooms.mddapi.repositories.IThemeRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +22,10 @@ public class ThemeServices {
     }
 
     @Transactional
-    public ThemeList getThemeList() {
+    public ThemeListResponse getThemeList() {
         List<Theme> themesDTO = null;
         List<ThemeEntity> themesEntity = null;
-        ThemeList themeList = new ThemeList();
+        ThemeListResponse themeList = new ThemeListResponse();
         try {
             themesEntity = themeRepository.findAll();
             themesDTO = themesEntity.stream().map(IThemeEntityToThemeMapper.INSTANCE::themeEntityToTheme).collect(Collectors.toList());

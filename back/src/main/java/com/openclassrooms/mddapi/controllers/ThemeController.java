@@ -1,7 +1,7 @@
 package com.openclassrooms.mddapi.controllers;
 
 import com.openclassrooms.mddapi.api.SubscriptionsApi;
-import com.openclassrooms.mddapi.models.ThemeList;
+import com.openclassrooms.mddapi.models.ThemeListResponse;
 import com.openclassrooms.mddapi.services.ThemeServices;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +19,9 @@ public class ThemeController implements SubscriptionsApi {
 
     @GetMapping(
             value = "/subscriptions",
-            produces = { "application/json" }
+            produces = {"application/json"}
     )
-    public ResponseEntity<ThemeList> subscriptionsGet() {
+    public ResponseEntity<ThemeListResponse> subscriptionsGet() {
         return ResponseEntity.ok(themeService.getThemeList());
     }
 }
