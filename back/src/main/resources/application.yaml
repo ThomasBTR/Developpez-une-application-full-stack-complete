@@ -1,7 +1,7 @@
 #Database configuration
 spring:
   datasource:
-    url: ${MYSQL_DATABASE_URL}
+    url: ${MYSQL_URL}
     username: ${MYSQL_ROOT_USERNAME}
     password: ${MYSQL_ROOT_PASSWORD}
 #Spring JPA configuration
@@ -12,3 +12,10 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         naming:
           physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+mdd:
+  app:
+    jwtSecret: openclassrooms #For test purpose only, pass this as parameter on production
+    jwtExpirationMs: 86400000 #For test purpose only, pass this as parameter on production
+server:
+  servlet:
+    context-path: '/api'

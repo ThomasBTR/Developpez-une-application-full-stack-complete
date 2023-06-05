@@ -1,0 +1,42 @@
+.center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.button {
+  margin: 20px;
+  justify-content: space-around;
+}
+.column {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .center {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .button {
+    margin: 20px;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mat-card-image {
+    width: 60vw;
+    height: 25vh;
+  }
+}
+
