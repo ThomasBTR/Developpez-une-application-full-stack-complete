@@ -22,8 +22,9 @@ public class ThemeEntity {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(cascade = CascadeType.REMOVE
-            , fetch = FetchType.LAZY)
-    @Column(name = "user_id")
-    private List<User> users;
+    @OneToMany(
+            mappedBy = "theme",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<UserThemeComposite> userList;
 }

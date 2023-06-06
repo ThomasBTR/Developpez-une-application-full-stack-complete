@@ -52,10 +52,11 @@ public class User {
   @Column(name = "updated_at")
   private LocalDateTime updatedAt;
 
-  @ManyToMany(
-          cascade = CascadeType.REMOVE,
-          fetch = FetchType.LAZY)
+  @OneToMany(
+          mappedBy = "user",
+          cascade = CascadeType.ALL,
+  fetch = FetchType.LAZY)
   @ToString.Exclude
-  private List<ThemeEntity> themes;
+  private List<UserThemeComposite> themes;
 
 }

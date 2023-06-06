@@ -19,11 +19,13 @@ CREATE TABLE `users`
     `updated_at` DATETIME  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE 'users_themes'
+CREATE TABLE `users_themes`
 (
     `user_id`  INT,
     `theme_id` INT,
-    PRIMARY KEY (`user_id`, `theme_id`)
+    PRIMARY KEY (`user_id`, `theme_id`),
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+    FOREIGN KEY (`theme_id`) REFERENCES `themes` (`id`)
 );
 
 INSERT INTO users (username, email, password, created_at, updated_at)
@@ -37,3 +39,10 @@ VALUES ('Java', 'This is the first theme'),
        ('Javascript', 'This is the third theme'),
        ('C#', 'This is the fourth theme'),
        ('Python', 'This is the fifth theme');
+
+INSERT INTO users_themes (user_id, theme_id)
+VALUES (1, 1),
+       (1, 2),
+       (1, 3),
+       (1, 4),
+       (1, 5);
