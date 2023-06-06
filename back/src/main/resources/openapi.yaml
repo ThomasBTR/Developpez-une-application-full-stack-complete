@@ -22,7 +22,7 @@ paths:
   /users:
     get:
       tags:
-        - user
+        - User
       summary: Retrieve user profile
       responses:
         '200':
@@ -39,7 +39,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     put:
       tags:
-        - user
+        - User
       summary: Update user profile
       requestBody:
         required: true
@@ -69,7 +69,7 @@ paths:
   /auth/login:
     post:
       tags:
-        - auth
+        - Authentication
       summary: Log in user
       operationId: loginUser
       requestBody:
@@ -94,7 +94,7 @@ paths:
   /auth/register:
     post:
       tags:
-        - auth
+        - Authentication
       summary: Register a new user
       operationId: registerUser
       requestBody:
@@ -119,7 +119,7 @@ paths:
   /logout:
     post:
       tags:
-        - auth
+        - Authentication
       summary: Log out user
       responses:
         '204':
@@ -130,10 +130,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions:
+  /themes:
     get:
       tags:
-        - subscription
+        - Theme
       summary: Retrieve list of all available themes
       responses:
         '200':
@@ -142,9 +142,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ThemeListResponse'
+  /subscriptions:
     post:
       tags:
-          - subscription
+          - Subscription
       summary: Subscribe to a theme
       requestBody:
         required: true
@@ -164,7 +165,7 @@ paths:
   /subscriptions/{theme_id}:
     delete:
       tags:
-          - subscription
+          - Subscription
       summary: Unsubscribe from a theme
       parameters:
         - in: path

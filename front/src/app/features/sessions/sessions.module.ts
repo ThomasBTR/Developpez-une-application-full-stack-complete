@@ -27,17 +27,20 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    FormComponent,
-    DetailComponent
-  ],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    SessionsRoutingModule,
-    ...materialModules
-  ]
+    declarations: [
+        ListComponent,
+        FormComponent,
+        DetailComponent
+    ],
+    exports: [
+        DetailComponent
+    ],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        SessionsRoutingModule,
+        ...materialModules
+    ]
 })
 export class SessionsModule { }

@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<div class="app">
+  <mat-toolbar *ngIf="$isLogged() | async">
+    <div class="menu">
+      <mat-icon svgIcon="logo" ></mat-icon>
+      <a mat-button [routerLink]="'/Articles'" class="link">Articles</a>
+      <a mat-button [routerLink]="'/themes'" class="link">Thèmes</a>
+      <a mat-button [routerLink]="'/me'" class="link">User</a>
+      <a mat-button (click)="logout()" class="link">Logout</a>
+    </div>
+  </mat-toolbar>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
