@@ -13,14 +13,19 @@
 #mat-toolbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 }
 #mat-icon {
   display: flex;
   align-items: flex-start;
 }
-#a {
-  display: flex;
-  align-items: flex-end;
+//.example-icon {
+//  display: flex;
+//  justify-content: space-around;
+//  justify-items: auto;
+//  margin-left: 10 px;
+//}
+.spacer {
+  flex: 1 1 auto;
 }

@@ -2,19 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Session } from '../interfaces/session.interface';
+import {Theme} from "../../../interfaces/theme.interface";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionApiService {
 
-  private pathService = 'api/session';
+  private pathService = 'api/themes';
 
   constructor(private httpClient: HttpClient) {
   }
 
   public all(): Observable<Session[]> {
     return this.httpClient.get<Session[]>(this.pathService);
+  }
+
+  public allTheme(): Observable<Theme[]> {
+    return this.httpClient.get<Theme[]>(this.pathService);
   }
 
   public detail(id: string): Observable<Session> {

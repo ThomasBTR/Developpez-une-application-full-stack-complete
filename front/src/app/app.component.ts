@@ -3,8 +3,8 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AuthService} from './features/auth/services/auth.service';
 import {SessionService} from './services/session.service';
-import { MatIconRegistry} from "@angular/material/icon";
-import { DomSanitizer } from "@angular/platform-browser";
+import {MatIconRegistry} from "@angular/material/icon";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent {
     private sessionService: SessionService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer) {
-      this.matIconRegistry.addSvgIcon('logo', this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/logo_p6.svg"));
+    this.matIconRegistry.addSvgIcon('logo', this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/logo_p6.svg"));
   }
 
   public $isLogged(): Observable<boolean> {

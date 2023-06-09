@@ -35,6 +35,9 @@ const materialModule = [
     BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
     ...materialModule
   ],
   providers: [
