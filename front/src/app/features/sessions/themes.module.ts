@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {SessionsRoutingModule} from './sessions-routing.module';
+import {ThemesRoutingModule} from './themes-routing.module';
 import localeFr from '@angular/common/locales/fr';
 import {ThemeComponent} from "./components/theme/theme.component";
 
@@ -33,9 +33,9 @@ const materialModules = [
     CommonModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    SessionsRoutingModule,
+    ThemesRoutingModule,
     ...materialModules
   ]
 })
-export class SessionsModule {
+export class ThemesModule {
 }

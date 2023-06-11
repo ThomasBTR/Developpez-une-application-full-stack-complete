@@ -56,4 +56,19 @@ public class UserServices {
         }
         return userProfile;
     }
+
+    @Transactional
+    public UserProfile userIdGet(Long id) {
+        User user = null;
+        UserProfile userProfile = null;
+        try {
+            user = userRepository.findById(id).orElse(null);
+            if (user != null) {
+                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfile(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userProfile;
+    }
 }

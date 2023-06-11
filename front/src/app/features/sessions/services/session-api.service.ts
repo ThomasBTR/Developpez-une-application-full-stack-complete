@@ -8,15 +8,11 @@ import {Theme} from "../../../interfaces/theme.interface";
 @Injectable({
   providedIn: 'root'
 })
-export class SessionApiService {
+export class  SessionApiService {
 
   private pathService = 'api/themes';
 
   constructor(private httpClient: HttpClient) {
-  }
-
-  public all(): Observable<Session[]> {
-    return this.httpClient.get<Session[]>(this.pathService);
   }
 
   public allTheme(): Observable<Theme[]> {

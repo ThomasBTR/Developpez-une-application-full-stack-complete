@@ -66,6 +66,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /user/{id}:
+    get:
+      tags:
+        - User
+      summary: Retrieve user profile by ID
+      parameters:
+        - in: path
+          name: id
+          description: ID of the user to retrieve
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Invalid user ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /auth/login:
     post:
       tags:
@@ -308,12 +340,9 @@ components:
           email:
             type: string
     ThemeListResponse:
-      type: object
-      properties:
-        themes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Theme'
+      type: array
+      items:
+        $ref: '#/components/schemas/Theme'
     SubscriptionRequest:
       type: object
       properties:
