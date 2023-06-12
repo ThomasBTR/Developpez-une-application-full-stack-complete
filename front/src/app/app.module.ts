@@ -14,7 +14,6 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MeComponent } from './components/me/me.component';
-import {ThemeComponent} from "./features/sessions/components/theme/theme.component";
 
 const materialModule = [
   MatButtonModule,

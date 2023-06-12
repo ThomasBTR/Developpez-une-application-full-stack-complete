@@ -1,17 +1,17 @@
 <div class="container">
-  <div class="items mt2" fxLayout="row" fxLayout.lt-md="column">
-    <mat-card class="item" *ngFor="let theme of (themes$ | async)" fxFlex>
+  <div class="items loop" fxLayout="row wrap" fxLayoutGap="16px" fxLayout.lt-md="column">
+    <mat-card fxFlex  class="item" *ngFor="let theme of (themes$ | async)">
       <mat-card-header>
         <mat-card-title>{{ theme.title }}</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content class="description">
         <p>
           {{ theme.description }}
         </p>
       </mat-card-content>
-      <mat-card-actions>
+      <mat-card-actions class="subscribe-button">
         <button mat-raised-button color="primary" [routerLink]="['subscribe',theme.id]">
-          <span class="ml1">S'abonner</span>
+          <span class="subscribe">S'abonner</span>
         </button>
       </mat-card-actions>
     </mat-card>
