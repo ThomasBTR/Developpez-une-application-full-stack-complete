@@ -2,10 +2,8 @@ package com.openclassrooms.mddapi.models;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -18,9 +16,15 @@ public class ThemeEntity {
     @Id
     private long id;
 
-    @ManyToOne(targetEntity = User.class)
-    private long userId;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "description")
+    private String description;
+
+    @OneToMany(
+            mappedBy = "theme",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<Subscription> userList;
 }

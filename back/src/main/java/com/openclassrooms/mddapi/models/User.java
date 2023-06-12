@@ -52,8 +52,11 @@ public class User {
   @Column(name = "updated_at")
   private LocalDateTime updatedAt;
 
-  @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(
+          mappedBy = "user",
+          cascade = CascadeType.ALL,
+  fetch = FetchType.LAZY)
   @ToString.Exclude
-  private List<ThemeEntity> subscriptions;
+  private List<Subscription> themes;
 
 }

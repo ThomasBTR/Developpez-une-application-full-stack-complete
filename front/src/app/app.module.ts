@@ -27,7 +27,7 @@ const materialModule = [
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MeComponent,
+    MeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +35,9 @@ const materialModule = [
     BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
     ...materialModule
   ],
   providers: [

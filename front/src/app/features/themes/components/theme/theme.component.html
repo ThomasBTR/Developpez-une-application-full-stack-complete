@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="items loop" fxLayout="row wrap" fxLayoutGap="16px" fxLayout.lt-md="column">
+    <mat-card fxFlex="50vw" class="item" *ngFor="let theme of (themes$ | async)">
+      <mat-card-header>
+        <mat-card-title>{{ theme.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="description">
+        <p>
+          {{ theme.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="subscribe-button">
+        <button mat-raised-button color="primary" (click)=subscribeOnTheme(theme.id)>
+          <span class="subscribe">S'abonner</span>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.item {
+  background: #F5F5F5;
+  display: flex;
+  //width: 400px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .item {
+    margin: 12px;
+    background: #F5F5F5;
+    display: flex;
+    width: 98vw;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +38,7 @@ public class UserServices {
     public UserProfile usersPut(UserUpdate userUpdate) {
         UserProfile userProfile = null;
         User user = null;
-        try{
+        try {
             user = userRepository.findByEmail(userUpdate.getEmail()).orElse(null);
             if (user != null) {
                 user = User.builder().id(user.getId())
@@ -52,7 +51,22 @@ public class UserServices {
                 user = userRepository.save(user);
                 userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfile(user);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userProfile;
+    }
+
+    @Transactional
+    public UserProfile userIdGet(Long id) {
+        User user = null;
+        UserProfile userProfile = null;
+        try {
+            user = userRepository.findById(id).orElse(null);
+            if (user != null) {
+                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfile(user);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return userProfile;

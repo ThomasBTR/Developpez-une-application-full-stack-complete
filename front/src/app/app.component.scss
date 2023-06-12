@@ -1,0 +1,31 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+#mat-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+#mat-icon {
+  display: flex;
+  align-items: flex-start;
+}
+//.example-icon {
+//  display: flex;
+//  justify-content: space-around;
+//  justify-items: auto;
+//  margin-left: 10 px;
+//}
+.spacer {
+  flex: 1 1 auto;
+}

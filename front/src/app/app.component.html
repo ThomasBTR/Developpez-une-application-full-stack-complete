@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<div class="app">
+  <mat-toolbar *ngIf="$isLogged() | async">
+    <p class="menu" >
+      <button mat-icon-button [routerLink]="'/'" class="example-icon">
+        <mat-icon svgIcon="logo"></mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/articles" class="example-icon">Articles</button>
+      <button mat-button routerLink="/themes" class="example-icon">Themes</button>
+      <button mat-button routerLink="/me" class="example-icon">User</button>
+      <button mat-button (click)="logout()" class="example-icon">Logout</button>
+    </p>
+  </mat-toolbar>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
