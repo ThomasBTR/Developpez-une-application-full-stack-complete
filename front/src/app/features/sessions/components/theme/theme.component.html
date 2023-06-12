@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="items mt2" fxLayout="row wrap" fxLayout.lt-md="column">
+  <div class="items mt2" fxLayout="row" fxLayout.lt-md="column">
     <mat-card class="item" *ngFor="let theme of (themes$ | async)" fxFlex>
       <mat-card-header>
         <mat-card-title>{{ theme.title }}</mat-card-title>
