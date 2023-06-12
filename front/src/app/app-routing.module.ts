@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'themes',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./features/sessions/themes.module').then(m => m.ThemesModule)
+    loadChildren: () => import('./features/themes/themes.module').then(m => m.ThemesModule)
   },
   {
     path: 'me',

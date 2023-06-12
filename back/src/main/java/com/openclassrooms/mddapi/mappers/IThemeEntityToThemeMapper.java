@@ -19,8 +19,8 @@ public interface IThemeEntityToThemeMapper {
     Theme themeEntityToTheme(ThemeEntity themeEntity);
 
     @Named("map UserThemeComposite to UserThemeInfo")
-    default UserThemeInfo map(UserThemeComposite userThemeComposite) {
-        return IUserToUserThemeInfoMapper.INSTANCE.userToUserThemeInfoMapper(userThemeComposite.getUser());
+    default UserThemeInfo map(Subscription subscription) {
+        return IUserToUserThemeInfoMapper.INSTANCE.userToUserThemeInfoMapper(subscription.getUser());
     }
 
 }

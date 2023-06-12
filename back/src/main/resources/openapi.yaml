@@ -174,17 +174,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ThemeListResponse'
-  /subscriptions:
+  /themes/{theme_id}/subscribe/{user_id}:
     post:
       tags:
-          - Subscription
+        - Theme
       summary: Subscribe to a theme
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SubscriptionRequest'
+      parameters:
+        - in: path
+          name: theme_id
+          description: ID of the theme to subscribe to
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: path
+          name: user_id
+          description: ID of the user subscribing
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
         '201':
           description: Subscribed to theme successfully
@@ -194,15 +203,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{theme_id}:
     delete:
       tags:
-          - Subscription
+          - Theme
       summary: Unsubscribe from a theme
       parameters:
         - in: path
           name: theme_id
           description: ID of the theme to unsubscribe from
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - in: path
+          name: user_id
+          description: ID of the user unsubscribing
           required: true
           schema:
             type: integer

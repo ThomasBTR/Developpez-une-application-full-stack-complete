@@ -11,13 +11,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "USERS_THEMES")
-public class UserThemeComposite implements Serializable {
+@Entity(name = "SUBSCRIPTIONS")
+public class Subscription implements Serializable {
 
     private static final long serialVersionUID = -23854044588823410L;
 
     @EmbeddedId
-    private UserThemeCompositePrimaryKey id;
+    private SubscriptionPrimaryKey id;
 
     @ManyToOne
     @MapsId("userId")

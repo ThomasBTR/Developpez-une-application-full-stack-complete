@@ -26,5 +26,5 @@ public class ThemeEntity {
             mappedBy = "theme",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    private List<UserThemeComposite> userList;
+    private List<Subscription> userList;
 }

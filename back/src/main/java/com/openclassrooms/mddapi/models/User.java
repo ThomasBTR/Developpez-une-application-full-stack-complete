@@ -57,6 +57,6 @@ public class User {
           cascade = CascadeType.ALL,
   fetch = FetchType.LAZY)
   @ToString.Exclude
-  private List<UserThemeComposite> themes;
+  private List<Subscription> themes;
 
 }
