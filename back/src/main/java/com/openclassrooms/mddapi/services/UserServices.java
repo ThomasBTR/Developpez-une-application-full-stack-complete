@@ -64,7 +64,7 @@ public class UserServices {
         try {
             user = userRepository.findById(id).orElse(null);
             if (user != null) {
-                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfile(user);
+                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfileForThemes(user);
             }
         } catch (Exception e) {
             e.printStackTrace();

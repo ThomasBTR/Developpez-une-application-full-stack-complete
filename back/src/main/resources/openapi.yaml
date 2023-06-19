@@ -297,7 +297,7 @@ components:
           subscriptions:
             type: array
             items:
-                $ref: '#/components/schemas/ThemeListResponse'
+                $ref: '#/components/schemas/ThemeUserInfo'
     LoginRequest:
       type: object
       properties:
@@ -344,6 +344,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserThemeInfo'
+    ThemeUserInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
     UserThemeInfo:
       type: object
       properties:
