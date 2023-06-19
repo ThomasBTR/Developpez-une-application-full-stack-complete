@@ -1,12 +1,13 @@
 package com.openclassrooms.mddapi.mappers;
 
-import com.openclassrooms.mddapi.models.*;
+import com.openclassrooms.mddapi.models.Subscription;
+import com.openclassrooms.mddapi.models.ThemeUserInfo;
+import com.openclassrooms.mddapi.models.User;
+import com.openclassrooms.mddapi.models.UserProfile;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
-
-import java.util.List;
 
 @Mapper
 public interface IUserToUserProfileMapper {

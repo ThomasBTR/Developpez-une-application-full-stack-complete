@@ -19,4 +19,8 @@ export class UserService {
   public delete(id: string): Observable<any> {
     return this.httpClient.delete(`${this.pathService}/${id}`);
   }
+
+  update(id: number, form : User) {
+    return this.httpClient.put(`${this.pathService}/${id}`, form);
+  }
 }

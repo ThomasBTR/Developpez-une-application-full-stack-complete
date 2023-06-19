@@ -8,6 +8,7 @@ import {Subscription} from "../../interfaces/subscription.interface";
 import {Observable} from "rxjs";
 import {Theme} from "../../interfaces/theme.interface";
 import {ThemesApiService} from "../../features/themes/services/themes-api.service";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-me',
@@ -19,11 +20,29 @@ export class MeComponent implements OnInit {
   public user: User | undefined;
   subscriptions : Subscription[] | undefined
 
+  public form = this.fb.group({
+    username: [
+      '',
+      [
+        Validators.required,
+        Validators.min(3)
+      ]
+    ],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.email
+      ]
+    ]
+  });
+
   constructor(private router: Router,
               private sessionService: SessionService,
               private matSnackBar: MatSnackBar,
               private userService: UserService,
-              private themesApiService: ThemesApiService) {
+              private themesApiService: ThemesApiService,
+              private fb: FormBuilder) {
   }
 
   public ngOnInit(): void {
@@ -55,5 +74,15 @@ export class MeComponent implements OnInit {
     this.matSnackBar.open('Theme retiré !', 'Close', {duration: 3000});
     this.ngOnInit();
   });
+  }
+
+  updateUser(form: any) {
+    this.userService.update(this.sessionService.sessionInformation!.id, form.value)
+      .subscribe((_: any) => {
+        this.matSnackBar.open('User updated !', 'Close', {duration: 3000});
+        this.ngOnInit();
+      });
+  }
+
   }
 }

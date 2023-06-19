@@ -17,12 +17,11 @@ info:
 
 servers:
   - url: http://localhost:8080/api
-
 paths:
   /users:
     get:
       tags:
-        - User
+        - Users
       summary: Retrieve user profile
       responses:
         '200':
@@ -31,35 +30,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserProfileList'
-        '401':
-          description: Unauthorized access
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-    put:
-      tags:
-        - User
-      summary: Update user profile
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserUpdate'
-      responses:
-        '200':
-          description: User profile updated successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserProfile'
-        '400':
-          description: Invalid user profile data
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
         '401':
           description: Unauthorized access
           content:
@@ -88,6 +58,43 @@ paths:
                 $ref: '#/components/schemas/UserProfile'
         '400':
           description: Invalid user ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - User
+      summary: Update user profile
+      parameters:
+        - in: path
+          name: id
+          description: ID of the user to retrieve
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: User profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Invalid user profile data
           content:
             application/json:
               schema:
@@ -276,8 +283,6 @@ components:
           type: string
         email:
           type: string
-        password:
-          type: string
     UserProfileList:
       type: array
       items:
@@ -298,6 +303,13 @@ components:
             type: array
             items:
                 $ref: '#/components/schemas/ThemeUserInfo'
+    UserUpdateRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
     LoginRequest:
       type: object
       properties:

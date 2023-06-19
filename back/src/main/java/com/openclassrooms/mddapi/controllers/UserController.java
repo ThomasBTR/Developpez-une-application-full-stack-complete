@@ -39,15 +39,16 @@ public class UserController implements UsersApi, UserApi {
     }
 
     @PutMapping(
-            value = "/users",
+            value = "/user/{id}",
             produces = { "application/json" },
             consumes = { "application/json" }
     )
     @Override
-    public ResponseEntity<UserProfile> usersPut(
+    public ResponseEntity<UserProfile> userIdPut(
+            @Parameter(name = "id", description = "ID of the user to retrieve", required = true, in = ParameterIn.PATH) @PathVariable("id") Long id,
             @Parameter(name = "UserUpdate", description = "", required = true) @Valid @RequestBody UserUpdate userUpdate
     ) {
-        return ResponseEntity.ok(userServices.usersPut(userUpdate));
+        return ResponseEntity.ok(userServices.usersPut(userUpdate, id));
     }
 
     @Override
