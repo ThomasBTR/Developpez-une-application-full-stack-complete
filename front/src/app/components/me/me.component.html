@@ -1,31 +1,38 @@
 <div class="m3">
   <mat-card>
     <mat-card-title>
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <button mat-icon-button (click)="back()">
+      <div>
+        <button fxLayout="row" fxLayoutAlign="start"  mat-icon-button (click)="back()">
           <mat-icon>arrow_back</mat-icon>
         </button>
-        <h1>User information</h1>
+        <h1 fxLayout="row" fxLayoutAlign="center" >User information</h1>
       </div>
     </mat-card-title>
     <mat-card-content>
       <div *ngIf="user" fxLayout="column" fxLayoutAlign="start center">
-        <p>Name: {{ user.username }} </p>
+        <p>Username : {{ user.username }} </p>
         <p>Email: {{ user.email }}</p>
         <p *ngIf="user.admin" class="my2">You are admin</p>
-        <div *ngIf="!user.admin" fxLayout="column" class="my2" fxLayoutAlign="center center">
-          <p>Delete my account:</p>
-          <button mat-raised-button color="warn" (click)="delete()">
-            <mat-icon>delete</mat-icon>
-            <span class="ml1">Detail</span>
-          </button>
-        </div>
-        <div fxLayoutAlign="space-between center" class="p2 w100">
-
-          <p><i>Create at: </i> {{ user.createdAt | date: 'longDate'}}</p>
-          <p><i>Last update: </i> {{ user.updatedAt| date: 'longDate'}}</p>
-        </div>
       </div>
     </mat-card-content>
   </mat-card>
+
+  <div class="items loop" fxLayout="row wrap" fxLayoutGap="16px" fxLayout.lt-md="column">
+    <mat-card fxFlex="50vw" class="item" *ngFor="let subscription of (subscriptions)">
+      <mat-card-header>
+        <mat-card-title>{{ subscription.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="description">
+        <p>
+          {{ subscription.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="subscribe-button">
+        <button mat-raised-button color="primary" (click)= unsubscribeOnTheme(subscription.id)>
+          <span class="subscribe">Se désabonner</span>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
 </div>

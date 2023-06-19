@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
 import { SessionService } from '../../services/session.service';
 import { UserService } from '../../services/user.service';
+import {Subscription} from "../../interfaces/subscription.interface";
+import {Observable} from "rxjs";
+import {Theme} from "../../interfaces/theme.interface";
+import {ThemesApiService} from "../../features/themes/services/themes-api.service";
 
 @Component({
   selector: 'app-me',
@@ -13,17 +17,22 @@ import { UserService } from '../../services/user.service';
 export class MeComponent implements OnInit {
 
   public user: User | undefined;
+  subscriptions : Subscription[] | undefined
 
   constructor(private router: Router,
               private sessionService: SessionService,
               private matSnackBar: MatSnackBar,
-              private userService: UserService) {
+              private userService: UserService,
+              private themesApiService: ThemesApiService) {
   }
 
   public ngOnInit(): void {
     this.userService
       .getById(this.sessionService.sessionInformation!.id.toString())
-      .subscribe((user: User) => this.user = user);
+      .subscribe((user: User) => {
+        this.user = user;
+        this.subscriptions = this.user.subscriptions;
+      });
   }
 
   public back(): void {
@@ -40,4 +49,11 @@ export class MeComponent implements OnInit {
       })
   }
 
+  unsubscribeOnTheme(themeId : number) {
+    this.themesApiService.unsubscribeOnTheme(themeId, this.sessionService.sessionInformation!.id)
+      .subscribe((_: any) => {
+    this.matSnackBar.open('Theme retiré !', 'Close', {duration: 3000});
+    this.ngOnInit();
+  });
+  }
 }

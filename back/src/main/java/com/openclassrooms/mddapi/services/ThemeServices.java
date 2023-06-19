@@ -64,4 +64,29 @@ public class ThemeServices {
             System.out.println(e.getMessage());
         }
     }
+
+    @Transactional
+    public void unsubscribeFromTheme(Long themeId, Long userId) {
+        User user;
+        ThemeEntity themeEntity;
+        try {
+            themeEntity = themeRepository.findById(themeId).orElse(null);
+            if (themeEntity != null) {
+                themeEntity.getUserList().removeIf(subscription -> subscription.getId().getUserId().equals(userId));
+                themeRepository.save(themeEntity);
+            };
+            user = userRepository.findById(userId).orElse(null);
+            if (user != null) {
+                user.getThemes().removeIf(subscription -> subscription.getId().getThemeId().equals(themeId));
+                userRepository.save(user);
+            }
+            SubscriptionPrimaryKey subscriptionPrimaryKey = new SubscriptionPrimaryKey();
+            subscriptionPrimaryKey.setThemeId(themeId);
+            subscriptionPrimaryKey.setUserId(userId);
+            subscriptionRepository.deleteById(subscriptionPrimaryKey);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
