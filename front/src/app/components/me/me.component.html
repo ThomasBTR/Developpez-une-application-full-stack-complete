@@ -18,7 +18,7 @@
         <input matInput placeholder="{{ user.email }}" formControlName="email" required>
       </mat-form-field>
       <div mat-dialog-actions>
-        <button mat-raised-button color="primary" (click)="updateUser()">Update</button>
+        <button mat-raised-button color="primary" (click)="updateUser(user.id)">Update</button>
       </div>
     </div>
   </mat-card>

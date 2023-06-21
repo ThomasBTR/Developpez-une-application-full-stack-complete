@@ -18,7 +18,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class MeComponent implements OnInit {
 
   public user: User | undefined;
-  subscriptions : Subscription[] | undefined
+  subscriptions : Subscription[] | undefined;
 
   public form = this.fb.group({
     username: [
@@ -82,7 +82,5 @@ export class MeComponent implements OnInit {
         this.matSnackBar.open('User updated !', 'Close', {duration: 3000});
         this.ngOnInit();
       });
-  }
-
   }
 }
