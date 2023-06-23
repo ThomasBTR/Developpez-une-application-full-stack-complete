@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="items loop" fxLayout="row wrap" fxLayoutGap="16px" fxLayout.lt-md="column">
-    <mat-card fxFlex="50vw" class="item" *ngFor="let theme of (themes$ | async)">
+<div class="container flex">
+  <div class="items justify-center justify-items-center flex-row flex-wrap">
+    <mat-card class="item flex flex-wrap grid-rows-2" *ngFor="let theme of (themes$ | async)">
       <mat-card-header>
-        <mat-card-title>{{ theme.title }}</mat-card-title>
+        <mat-card-title class="w-12 text-center">{{ theme.title }}</mat-card-title>
       </mat-card-header>
       <mat-card-content class="description">
         <p>
@@ -16,7 +16,4 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
-
-
 </div>
