@@ -1,34 +1,5 @@
-
-//#app {
-//  display: flex;
-//  flex-direction: column;
-//  justify-content: flex-start;
-//  height: 100%;
-//}
-//.menu {
-//  display: flex;
-//  flex-direction: row;
-//  justify-content: space-between;
-//  width: 100%;
-//}
-//#mat-toolbar {
-//  display: flex;
-//  flex-direction: row;
-//  justify-content: center;
-//  width: 100%;
-//}
-.mat-icon {
-  display: flex;
-  width: 100px;
-  height: 100px;
-  font-size: 100px;
+.header {
+  background-color: #fff;
+  border-bottom: #000000;
+  border-bottom-style: solid;
 }
-////.example-icon {
-////  display: flex;
-////  justify-content: space-around;
-////  justify-items: auto;
-////  margin-left: 10 px;
-////}
-//.spacer {
-//  flex: 1 1 auto;
-//}

@@ -1,5 +1,5 @@
-<div class=" md:container md:mx-auto md:px-2 md:0justify-items-center">
-  <mat-toolbar *ngIf="$isLogged() | async" class="flex flex-col md:flex md:flex-row flex-1">
+<div class="md:container md:mx-auto md:px-2 md:0justify-items-center">
+  <mat-toolbar *ngIf="$isLogged() | async" class="header flex flex-col md:flex md:flex-row flex-1">
     <div class="flex">
       <img src="../assets/logo_p6.png" class="flex  min-h-fit max-h-20 w-50 text-3xl" alt="logo">
       <!--      <button mat-icon-button [routerLink]="'/'" class="">-->
@@ -20,11 +20,11 @@
         <img src="../assets/user_logo.svg" class="flex  min-h-fit max-h-12 w-12 text-xl" alt="user">
       </button>
     </div>
-    <div class="">
-      <button mat-button (click)="logout()" class="">
-        logout
-      </button>
-    </div>
+<!--    <div class="">-->
+<!--      <button mat-button (click)="logout()" class="">-->
+<!--        logout-->
+<!--      </button>-->
+<!--    </div>-->
   </mat-toolbar>
   <div>
     <router-outlet></router-outlet>
