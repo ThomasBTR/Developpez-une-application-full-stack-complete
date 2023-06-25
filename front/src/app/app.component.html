@@ -1,15 +1,25 @@
-<div class="app">
-  <mat-toolbar *ngIf="$isLogged() | async">
-    <p class="menu" >
-      <button mat-icon-button [routerLink]="'/'" class="example-icon">
-        <mat-icon svgIcon="logo"></mat-icon>
+<div class="md:container md:mx-auto md:px-2 md:0justify-items-center">
+  <mat-toolbar *ngIf="$isLogged() | async" class="header flex flex-col md:flex md:flex-row flex-1">
+    <div class="flex">
+      <img src="../assets/logo_p6.png" class="flex  min-h-fit max-h-20 w-50 text-3xl" alt="logo">
+      <!--      <button mat-icon-button [routerLink]="'/'" class="">-->
+      <!--        <mat-icon svgIcon="logo" class="mat-icon-button"></mat-icon>-->
+      <!--      </button>-->
+    </div>
+    <div class="flex-auto">
+      <span></span>
+    </div>
+    <div class="">
+      <button mat-button routerLink="/articles" class="">Articles</button>
+    </div>
+    <div class="">
+      <button mat-button routerLink="/themes" class="">Themes</button>
+    </div>
+    <div class="">
+      <button mat-button routerLink="/me" class="">
+        <img src="../assets/user_logo.svg" class="flex  min-h-fit max-h-12 w-12 text-xl" alt="user">
       </button>
-      <span class="spacer"></span>
-      <button mat-button routerLink="/articles" class="example-icon">Articles</button>
-      <button mat-button routerLink="/themes" class="example-icon">Themes</button>
-      <button mat-button routerLink="/me" class="example-icon">User</button>
-      <button mat-button (click)="logout()" class="example-icon">Logout</button>
-    </p>
+    </div>
   </mat-toolbar>
   <div>
     <router-outlet></router-outlet>

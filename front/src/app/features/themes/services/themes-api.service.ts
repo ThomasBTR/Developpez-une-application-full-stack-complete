@@ -22,4 +22,8 @@ export class ThemesApiService {
   subscribeOnTheme(themeId: number, userId: number | undefined) {
     return this.httpClient.post<void>(`${this.pathService}/${themeId}/subscribe/${userId}`, null);
   }
+
+  unsubscribeOnTheme(themeId: number, userId: number | undefined) {
+    return this.httpClient.delete(`${this.pathService}/${themeId}/subscribe/${userId}`);
+  }
 }

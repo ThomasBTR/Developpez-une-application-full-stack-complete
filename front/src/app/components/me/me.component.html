@@ -1,31 +1,58 @@
-<div class="m3">
-  <mat-card>
-    <mat-card-title>
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <button mat-icon-button (click)="back()">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-        <h1>User information</h1>
-      </div>
-    </mat-card-title>
-    <mat-card-content>
-      <div *ngIf="user" fxLayout="column" fxLayoutAlign="start center">
-        <p>Name: {{ user.firstName }} {{ user.lastName | uppercase }}</p>
-        <p>Email: {{ user.email }}</p>
-        <p *ngIf="user.admin" class="my2">You are admin</p>
-        <div *ngIf="!user.admin" fxLayout="column" class="my2" fxLayoutAlign="center center">
-          <p>Delete my account:</p>
-          <button mat-raised-button color="warn" (click)="delete()">
-            <mat-icon>delete</mat-icon>
-            <span class="ml1">Detail</span>
-          </button>
+<div class="container flex flex-col justify-center" xmlns="http://www.w3.org/1999/html">
+  <mat-card class="justify-center content-center center">
+    <form class="login-form" [formGroup]="form" (ngSubmit)="updateUser(form)">
+      <mat-card-title >
+        <div>
+          <h1 class="grid justify-items-center">Profil utilisateur</h1>
         </div>
-        <div fxLayoutAlign="space-between center" class="p2 w100">
-
-          <p><i>Create at: </i> {{ user.createdAt | date: 'longDate'}}</p>
-          <p><i>Last update: </i> {{ user.updatedAt| date: 'longDate'}}</p>
+      </mat-card-title>
+      <div *ngIf="user" class="grid justify-items-center">
+        <p>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="username" formControlName="username" required>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label>email@email.fr</mat-label>
+            <input matInput placeholder="email" formControlName="email" required>
+          </mat-form-field>
+        </p>
+        <div mat-dialog-actions>
+          <button mat-raised-button color="primary" (click)="updateUser(user.id)">Sauvegarder</button>
         </div>
       </div>
-    </mat-card-content>
+    </form>
+    <div class="grid justify-items-center text-red-700">
+      <button mat-button (click)="logout()" class="accent-red-600">
+        Se déconnecter
+      </button>
+    </div>
   </mat-card>
+
+  <div class="m-5">
+    <h1 class="grid justify-items-center">Abonnements</h1>
+  </div>
+
+  <div class="grid flex-wrap grid-cols-2 gap-4 m-3">
+    <mat-card class="justify-center item" *ngFor="let subscription of (subscriptions)">
+      <mat-card-header>
+        <mat-card-title>{{ subscription.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="truncate">
+        <p>
+          {{ subscription.description }}
+        </p>
+      </mat-card-content>
+      <div class="flex justify-center">
+        <mat-card-actions class="subscribe-button">
+          <button mat-raised-button color="primary" (click)=unsubscribeOnTheme(subscription.id)>
+            <span class="subscribe">Se désabonner</span>
+          </button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+  </div>
+
 </div>

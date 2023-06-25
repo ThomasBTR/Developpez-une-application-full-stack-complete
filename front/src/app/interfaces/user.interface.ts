@@ -1,10 +1,12 @@
+import {Subscription} from "./subscription.interface";
+
 export interface User {
   id: number;
   email: string;
-  lastName: string;
-  firstName: string;
+  username: string;
   admin: boolean;
   password: string;
   createdAt: Date;
   updatedAt?: Date;
+  subscriptions?: Subscription[];
 }

@@ -35,21 +35,22 @@ public class UserServices {
     }
 
     @Transactional
-    public UserProfile usersPut(UserUpdate userUpdate) {
+    public UserProfile usersPut(UserUpdate userUpdate, Long id) {
         UserProfile userProfile = null;
         User user = null;
         try {
-            user = userRepository.findByEmail(userUpdate.getEmail()).orElse(null);
+            user = userRepository.findById(id).orElse(null);
             if (user != null) {
                 user = User.builder().id(user.getId())
                         .email(userUpdate.getEmail())
                         .username(userUpdate.getUsername())
-                        .password(userUpdate.getPassword())
+                        .password(user.getPassword())
                         .createdAt(user.getCreatedAt())
                         .updatedAt(LocalDateTime.now())
+                        .themes(user.getThemes())
                         .build();
                 user = userRepository.save(user);
-                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfile(user);
+                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfileForThemes(user);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,7 +65,7 @@ public class UserServices {
         try {
             user = userRepository.findById(id).orElse(null);
             if (user != null) {
-                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfile(user);
+                userProfile = IUserToUserProfileMapper.INSTANCE.userToUserProfileForThemes(user);
             }
         } catch (Exception e) {
             e.printStackTrace();
