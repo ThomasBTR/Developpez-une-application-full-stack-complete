@@ -20,7 +20,7 @@ export class UserService {
     return this.httpClient.delete(`${this.pathService}/${id}`);
   }
 
-  update(id: number, form : User) {
+  update(id: number, form : User) : Observable<any> {
     return this.httpClient.put(`${this.pathService}/${id}`, form);
   }
 }

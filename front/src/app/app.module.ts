@@ -16,7 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MeComponent } from './components/me/me.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 
 const materialModule = [
@@ -46,7 +46,8 @@ const materialModule = [
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
