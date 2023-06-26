@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,6 +27,14 @@ public class ArticleEntity {
     private LocalDateTime date;
 
     @ManyToOne
-    @MapsId("theme_id")
+    @JoinColumn(name = "theme_id", insertable = false)
     private ThemeEntity theme;
+
+
+    @OneToMany(
+            mappedBy = "articleEntity",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Comment> comments;
 }

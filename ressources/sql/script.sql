@@ -42,6 +42,16 @@ CREATE TABLE `articles`
     FOREIGN KEY (`theme_id`) REFERENCES `themes` (`id`)
 );
 
+CREATE TABLE `comments`
+(
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `content` TEXT(65535),
+    `author` VARCHAR(500),
+    `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `article_id` INT,
+    FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`)
+);
+
 INSERT INTO users (username, email, password, created_at, updated_at)
 #  password: test!1234
 VALUES ('Admin', 'admin@mdd.com', '$2a$10$OrLIi.J1M2Y19h.QfIp3.e3BW7LxRuunsNHFQm.gnp60hwo.5fCci', null, null);

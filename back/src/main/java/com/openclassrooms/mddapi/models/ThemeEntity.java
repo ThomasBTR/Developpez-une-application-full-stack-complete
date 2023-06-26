@@ -29,7 +29,7 @@ public class ThemeEntity {
     private List<Subscription> userList;
 
     @OneToMany(
-            mappedBy = "theme_id",
+            mappedBy = "theme",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
