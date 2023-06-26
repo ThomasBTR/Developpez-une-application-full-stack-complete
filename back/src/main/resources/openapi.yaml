@@ -366,12 +366,9 @@ components:
           type: string
           format: date-time
     ArticleListResponse:
-      type: object
-      properties:
-        articles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ArticleDto'
+      type: array
+      items:
+        $ref: '#/components/schemas/ArticleDto'
     ArticleDto:
         type: object
         properties:
@@ -389,8 +386,10 @@ components:
             format: date-time
           author:
             type: string
-
-
+          comments:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CommentDto'
     UserDto:
       type: object
       properties:

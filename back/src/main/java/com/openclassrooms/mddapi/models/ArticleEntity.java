@@ -1,8 +1,10 @@
 package com.openclassrooms.mddapi.models;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,8 +25,10 @@ public class ArticleEntity {
     private String content;
     @Column(name = "author")
     String author;
-    @Column(name = "date")
-    private LocalDateTime date;
+
+    @CreatedDate
+    @Column(name = "date", updatable = false)
+    private Instant date;
 
     @ManyToOne
     @JoinColumn(name = "theme_id", insertable = false)
