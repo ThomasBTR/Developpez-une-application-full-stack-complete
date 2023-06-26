@@ -1,0 +1,22 @@
+<div class="container flex">
+  <div class="grid flex-wrap grid-cols-2 gap-8 m-10">
+    <mat-card class="justify-center item" *ngFor="let article of (articles$ | async)">
+      <mat-card-header>
+        <mat-card-title class="">{{ article.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid grid-cols-2 ">
+          <div>
+            {{ article.date | date: 'dd/MM/yyyy' }}
+          </div>
+          <div>
+            {{ article.author }}
+          </div>
+        </div>
+        <a [routerLink]="['/articles/:id', article.id]" class="text-ellipsis text-justify overflow-hidden h-20">
+          {{ article.content }}
+        </a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

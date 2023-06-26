@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ThemeComponent} from "./components/theme/theme.component";
+import {ArticlesComponent} from "./components/article/articles.component";
 
 const routes: Routes = [
-  {path: '', title: 'Themes', component: ThemeComponent}
+  {path: '', title: 'Your Feed', component: ArticlesComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ThemesRoutingModule {
+export class ArticlesRoutingModule {
 }
