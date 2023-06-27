@@ -18,6 +18,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
+import { DetailComponent } from './features/articles/components/detail/detail.component';
 
 const materialModule = [
   MatButtonModule,
@@ -31,7 +32,8 @@ const materialModule = [
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MeComponent
+    MeComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
