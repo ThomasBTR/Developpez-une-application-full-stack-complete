@@ -13,9 +13,12 @@
             {{ article.author }}
           </div>
         </div>
-        <a [routerLink]="['detail', article.id]" class="text-ellipsis text-justify overflow-hidden h-20">
-          {{ article.content }}
-        </a>
+        <mat-card-actions>
+            <a [routerLink]="['detail', article.id]"
+                            class="text-ellipsis text-justify overflow-hidden h-20">
+            {{ article.content }}
+          </a>
+        </mat-card-actions>
       </mat-card-content>
     </mat-card>
   </div>

@@ -29,8 +29,21 @@ public class ArticleServices {
             response = articles.stream().map(IArticleToArticleDtoMapper.INSTANCE::articleEntityToArticleResponse).collect(Collectors.toList());
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return response;
         }
+        return response;
+    }
+
+    @Transactional
+    public ArticleDto getArticle(Long articleId) {
+        ArticleDto articleDto = new ArticleDto();
+        try {
+            ArticleEntity articleEntity = articleRepository.findById(articleId).orElse(null);
+            if (articleEntity != null) {
+                articleDto = IArticleToArticleDtoMapper.INSTANCE.articleEntityToArticleResponse(articleEntity);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return articleDto;
     }
 }

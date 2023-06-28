@@ -1,1 +1,28 @@
-<p>detail works!</p>
+<div class="container flex">
+    <div class="">
+      <mat-card *ngIf="article">
+        <mat-card-header>
+          <mat-card-title class="">
+            <h1>{{article.title}}</h1>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <div class="grid grid-cols-3 ">
+              <div>{{article.author}}</div>
+              <div>{{article.date | date:'dd/MM/yyyy'}}</div>
+              <div>{{article.theme}}</div>
+            </div>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <p class="divide-solid divide-black flex flex-1"></p>
+        <mat-card-content >
+          <p>{{article.content}}</p>
+          <div>
+            <h2>Comments</h2>
+            <div *ngFor="let comment of article.comments">
+              <p>{{comment.content}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>

@@ -10,7 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import localeFr from '@angular/common/locales/fr';
-import {ArticlesComponent} from "./components/article/articles.component";
+import {ListComponent} from "./components/list/list.component";
 import {ArticlesRoutingModule} from "./articles-routing.module";
 
 
@@ -28,7 +28,7 @@ const materialModules = [
 
 @NgModule({
   declarations: [
-    ArticlesComponent
+    ListComponent
   ],
   imports: [
     CommonModule,

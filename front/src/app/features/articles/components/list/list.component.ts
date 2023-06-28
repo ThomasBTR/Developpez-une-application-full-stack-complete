@@ -4,27 +4,24 @@ import {SessionService} from "../../../../services/session.service";
 import {Observable} from "rxjs";
 import {Article} from "../../interfaces/article.interface";
 import {ArticlesApiService} from "../../services/articles-api.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.scss']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
-export class ArticlesComponent implements OnInit {
+export class ListComponent {
 
   public articles$: Observable<Article[]> = this.sessionApiService.getAllArticles();
 
   constructor(
     private sessionService: SessionService,
     private sessionApiService: ArticlesApiService,
-  ) {
-  }
+    private route: ActivatedRoute,
+  ) {}
 
   get user(): SessionInformation | undefined {
     return this.sessionService.sessionInformation;
   }
-
-  ngOnInit(): void {
-  }
-
 }
