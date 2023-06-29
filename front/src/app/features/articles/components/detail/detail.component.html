@@ -30,21 +30,25 @@
             </div>
           </div>
         </div>
-<!--        <div>-->
-<!--          <h2>Ajouter un commentaire</h2>-->
-<!--          <form class="grid grid-cols-2 gap-4 m-5" [formGroup]="commentForm" (ngSubmit)="onSubmit()">-->
-<!--            <div class="flex justify-end">{{username}}</div>-->
-<!--            <div class="flex justify-center content-center comment col-span-1">-->
-<!--              <mat-form-field appearance="fill">-->
-<!--                <mat-label>Commentaire</mat-label>-->
-<!--                <textarea matInput formControlName="content" placeholder="Commentaire"></textarea>-->
-<!--              </mat-form-field>-->
-<!--            </div>-->
-<!--            <div class="flex justify-center content-center comment col-span-2">-->
-<!--              <button mat-raised-button color="primary" type="submit">Envoyer</button>-->
-<!--            </div>-->
-<!--          </form>-->
-<!--        </div>-->
+        <div>
+          <div *ngIf="user">
+          <h2>Ajouter un commentaire</h2>
+          <form class="grid grid-cols-5 gap-4 m-7" [formGroup]="form" (ngSubmit)="postComment(form)">
+            <div></div>
+            <div class="flex justify-center content-center col-span-3">
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Ecrivez ici votre commentaire</mat-label>
+                <input matInput formControlName="content" placeholder="Commentaire">
+              </mat-form-field>
+            </div>
+            <div class="flex justify-center content-center" mat-dialog-actions>
+              <button mat-raised-button color="primary" type="submit">
+                <mat-icon (click)="postComment(form)">send</mat-icon>
+              </button>
+            </div>
+          </form>
+          </div>
+        </div>
       </mat-card-content>
     </div>
   </mat-card>

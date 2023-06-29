@@ -22,6 +22,6 @@ public class Comment {
     private String username;
 
     @ManyToOne
-    @JoinColumn(name = "article_id", insertable = false)
+    @JoinColumn(name = "article_id", nullable = false)
     private ArticleEntity articleEntity;
 }

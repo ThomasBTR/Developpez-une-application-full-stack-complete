@@ -1,9 +1,13 @@
 package com.openclassrooms.mddapi.services;
 
 import com.openclassrooms.mddapi.mappers.IArticleToArticleDtoMapper;
+import com.openclassrooms.mddapi.mappers.ICommentToDtoMapper;
 import com.openclassrooms.mddapi.models.ArticleDto;
 import com.openclassrooms.mddapi.models.ArticleEntity;
+import com.openclassrooms.mddapi.models.Comment;
+import com.openclassrooms.mddapi.models.CommentDto;
 import com.openclassrooms.mddapi.repositories.IArticleRepository;
+import com.openclassrooms.mddapi.repositories.ICommentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,9 +19,11 @@ import java.util.stream.Collectors;
 public class ArticleServices {
 
     private final IArticleRepository articleRepository;
+    private ICommentRepository commentRepository;
 
-    public ArticleServices(IArticleRepository articleRepository) {
+    public ArticleServices(IArticleRepository articleRepository, ICommentRepository commentRepository) {
         this.articleRepository = articleRepository;
+        this.commentRepository = commentRepository;
     }
 
     @Transactional
@@ -45,5 +51,23 @@ public class ArticleServices {
             e.printStackTrace();
         }
         return articleDto;
+    }
+
+    public CommentDto addComment(Long articleId, CommentDto commentDto) {
+        CommentDto response = new CommentDto();
+        try {
+            ArticleEntity articleEntity = articleRepository.findById(articleId).orElse(null);
+            if (articleEntity != null) {
+                Comment comment = ICommentToDtoMapper.INSTANCE.commentDtoToCommentEntity(commentDto);
+                comment.setArticleEntity(articleEntity);
+                comment = commentRepository.save(comment);
+                articleEntity.getComments().add(comment);
+                articleEntity = articleRepository.save(articleEntity);
+                response = ICommentToDtoMapper.INSTANCE.commentToCommentDto(articleEntity.getComments().get(articleEntity.getComments().size() - 1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
     }
 }
