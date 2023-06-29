@@ -42,6 +42,10 @@ export class DetailComponent implements OnInit {
     this.fetchArticle();
   }
 
+  public back(): void {
+    window.history.back();
+  }
+
   fetchArticle(): void {
     this.articleApiService
       .getArticle(this.articleId)
