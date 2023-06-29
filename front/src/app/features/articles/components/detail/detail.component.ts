@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from "../../interfaces/article.interface";
-import {Observable} from "rxjs";
 import {ArticlesApiService} from "../../services/articles-api.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Comment} from "../../interfaces/comment.interface";
 
 @Component({
   selector: 'app-detail',
@@ -13,6 +13,7 @@ export class DetailComponent implements OnInit {
 
   public articleId: string;
   public article: Article | undefined;
+  public comments: Comment[] | undefined;
 
   constructor(
               private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class DetailComponent implements OnInit {
       .getArticle(this.articleId)
       .subscribe((article: Article) => {
         this.article = article;
+        this.comments = article.comments;
       });
   }
 }

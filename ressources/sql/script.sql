@@ -104,3 +104,36 @@ VALUES
     ('Java et le développement d\'applications Android', 'Java est le langage de programmation principal utilisé pour le développement d''applications Android. Grâce à la plateforme Android, les développeurs peuvent créer des applications mobiles puissantes et innovantes pour les smartphones et les tablettes. Java fournit les outils et les bibliothèques nécessaires pour développer des fonctionnalités avancées, interagir avec les composants du système Android et créer des expériences utilisateur engageantes. Le développement d''applications Android en Java offre une grande flexibilité et ouvre la voie à une vaste communauté de développeurs.', 'Matthew Davis', '2022-07-13 14:20:00', 1),
     ('Java et l\'Internet des objets (IoT)', 'L''Internet des objets (IoT) est un domaine en pleine expansion qui consiste à connecter des objets physiques à Internet. Java est un choix populaire pour le développement d''applications IoT en raison de sa portabilité, de sa sécurité et de sa grande communauté de développeurs. Java offre des bibliothèques et des frameworks adaptés à l''IoT, ainsi que des outils pour la gestion des données, la communication entre appareils et la création d''applications IoT évolutives. Avec Java, les développeurs peuvent créer des solutions innovantes pour l''Internet des objets.', 'Emily Wilson', '2022-09-28 10:10:00', 1)
 ;
+
+INSERT INTO `comments` (content, author, article_id)
+VALUES
+    ('Très bon article !', 'John Smith', 1),
+    ('Merci pour cet article !', 'Jane Doe', 1),
+    ('J''ai appris beaucoup de choses !', 'John Smith', 2),
+    ('Merci pour cet article !', 'Jane Doe', 2),
+    ('Très bon article !', 'John Smith', 3),
+    ('Merci pour cet article !', 'Jane Doe', 3),
+    ('J''ai appris beaucoup de choses !', 'John Smith', 4),
+    ('Merci pour cet article !', 'Jane Doe', 4),
+    ('Très bon article !', 'John Smith', 5),
+    ('Merci pour cet article !', 'Jane Doe', 5),
+    ('J''ai appris beaucoup de choses !', 'John Smith', 6),
+    ('Merci pour cet article !', 'Jane Doe', 6),
+    ('Très bon article !', 'John Smith', 7),
+    ('Merci pour cet article !', 'Jane Doe', 7),
+    ('J''ai appris beaucoup de choses !', 'John Smith', 8),
+    ('Merci pour cet article !', 'Jane Doe', 8),
+    ('Très bon article !', 'John Smith', 9),
+    ('Merci pour cet article !', 'Jane Doe', 9),
+    ('J''ai appris beaucoup de choses !', 'John Smith', 10),
+    ('Merci pour cet article !', 'Jane Doe', 10),
+    ('Très bon article !', 'John Smith', 11),
+    ('Merci pour cet article !', 'Jane Doe', 11),
+    ('J''ai appris beaucoup de choses !', 'John Smith', 12),
+    ('Merci pour cet article !', 'Jane Doe', 12),
+    ('Très bon article !', 'John Smith', 13),
+    ('Merci pour cet article !', 'Jane Doe', 13),
+    ('J''ai appris beaucoup de choses !', 'John Smith', 14),
+    ('Merci pour cet article !', 'Jane Doe', 14),
+    ('Très bon article !', 'John Smith', 15),
+    ('Merci pour cet article !', 'Jane Doe', 15);

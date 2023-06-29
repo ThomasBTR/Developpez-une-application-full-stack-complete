@@ -18,6 +18,9 @@ public class Comment {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "author")
+    private String username;
+
     @ManyToOne
     @JoinColumn(name = "article_id", insertable = false)
     private ArticleEntity articleEntity;
