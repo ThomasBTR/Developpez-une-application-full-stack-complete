@@ -36,7 +36,8 @@ public class ArticleEntity {
 
 
     @OneToMany(
-            mappedBy = "articleEntity"
+            mappedBy = "articleEntity",
+            cascade = CascadeType.ALL
     )
     private List<Comment> comments;
 }

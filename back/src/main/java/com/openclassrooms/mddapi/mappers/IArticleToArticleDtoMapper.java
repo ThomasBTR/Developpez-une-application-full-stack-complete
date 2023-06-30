@@ -1,5 +1,6 @@
 package com.openclassrooms.mddapi.mappers;
 
+import com.openclassrooms.mddapi.api.ArticlesApi;
 import com.openclassrooms.mddapi.models.ArticleDto;
 import com.openclassrooms.mddapi.models.ArticleEntity;
 import org.mapstruct.Mapper;
@@ -22,6 +23,14 @@ public interface IArticleToArticleDtoMapper {
     @Mapping(source = "comments", target = "comments")
     ArticleDto articleEntityToArticleResponse(ArticleEntity article);
 
+    @Mapping(source = "title", target = "title")
+    @Mapping(source = "content", target = "content")
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "theme", target = "theme.title")
+    @Mapping(source = "date", target = "date")
+    @Mapping(source = "author", target = "author")
+    @Mapping(source = "comments", target = "comments")
+    ArticleEntity articleDtoToArticleEntity(ArticleDto articleDto);
 
 
 }

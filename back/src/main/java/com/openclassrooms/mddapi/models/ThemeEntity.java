@@ -30,8 +30,7 @@ public class ThemeEntity {
 
     @OneToMany(
             mappedBy = "theme",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            cascade = CascadeType.ALL
     )
     private List<ArticleEntity> articleEntities;
 }
