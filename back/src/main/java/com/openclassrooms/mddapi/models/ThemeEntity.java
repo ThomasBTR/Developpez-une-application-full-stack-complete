@@ -27,4 +27,11 @@ public class ThemeEntity {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
     private List<Subscription> userList;
+
+    @OneToMany(
+            mappedBy = "theme",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<ArticleEntity> articleEntities;
 }

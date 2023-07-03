@@ -18,6 +18,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
+import { DetailComponent } from './features/articles/components/detail/detail.component';
+import {MatDividerModule} from "@angular/material/divider";
 
 const materialModule = [
   MatButtonModule,
@@ -31,24 +33,26 @@ const materialModule = [
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MeComponent
+    MeComponent,
+    DetailComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    HttpClientModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    ...materialModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatDialogModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        HttpClientModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        ...materialModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatDividerModule
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],

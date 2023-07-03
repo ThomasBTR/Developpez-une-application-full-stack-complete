@@ -45,16 +45,6 @@ export class MeComponent implements OnInit {
     window.history.back();
   }
 
-  public delete(): void {
-    this.userService
-      .delete(this.sessionService.sessionInformation!.id.toString())
-      .subscribe((_) => {
-        this.matSnackBar.open("Your account has been deleted !", 'Close', { duration: 3000 });
-        this.sessionService.logOut();
-        this.router.navigate(['/']);
-      })
-  }
-
   unsubscribeOnTheme(themeId : number) {
     this.themesApiService.unsubscribeOnTheme(themeId, this.sessionService.sessionInformation!.id)
       .subscribe((_: any) => {

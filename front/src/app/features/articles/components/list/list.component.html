@@ -1,0 +1,38 @@
+<div class="container flex flex-col">
+  <div class="grid grid-cols-2 pt-10">
+    <div class="flex flex-row ml-10">
+      <button class="flex" mat-raised-button color="primary" (click)="add()">Créer un article</button>
+    </div>
+    <div class="flex flex-row-reverse mr-10">
+      <button mat-button [matMenuTriggerFor]="orderBy">Trier par</button>
+      <mat-menu #orderBy="matMenu">
+        <button mat-menu-item *ngFor="let item of orderByList" (click)="orderArticlesBy(item.menuLinkText)">
+          {{ item.menuLinkText }}
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="grid flex-wrap grid-cols-2 gap-8 m-10">
+    <mat-card class="justify-center item" *ngFor="let article of (articles$ | async)">
+      <mat-card-header>
+        <mat-card-title class="">{{ article.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="grid grid-cols-2 ">
+          <div>
+            {{ article.date | date: 'dd/MM/yyyy' }}
+          </div>
+          <div>
+            {{ article.author }}
+          </div>
+        </div>
+        <mat-card-actions>
+            <a [routerLink]="['detail', article.id]"
+                            class="text-ellipsis text-justify overflow-hidden h-20">
+            {{ article.content }}
+          </a>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

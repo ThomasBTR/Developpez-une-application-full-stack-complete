@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ThemeComponent} from "./components/theme/theme.component";
 
 const routes: Routes = [
-  {path: '', title: 'MDD', component: ThemeComponent}
+  {path: '', title: 'Themes', component: ThemeComponent}
 ];
 
 @NgModule({

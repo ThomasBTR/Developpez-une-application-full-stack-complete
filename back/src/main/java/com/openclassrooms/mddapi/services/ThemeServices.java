@@ -25,6 +25,12 @@ public class ThemeServices {
         this.subscriptionRepository = subscriptionRepository;
     }
 
+
+    @Transactional
+    public ThemeEntity saveTheme(ThemeEntity themeEntity) {
+        return themeRepository.save(themeEntity);
+    }
+
     @Transactional
     public List<Theme> getThemeList() {
         List<Theme> themesDTO = null;
@@ -57,7 +63,7 @@ public class ThemeServices {
                     user.getThemes().add(subscription);
                     userRepository.save(user);
                     themeEntity.getUserList().add(subscription);
-                    themeRepository.save(themeEntity);
+                    saveTheme(themeEntity);
                 }
             }
         } catch (Exception e) {
@@ -88,5 +94,22 @@ public class ThemeServices {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Transactional
+    public ThemeEntity handleTheme(ArticlePostRequest articlePostRequest, ArticleEntity articleEntity) {
+        ThemeEntity themeEntity = null;
+        if (articlePostRequest.getTheme() != null) {
+            String themeTitle = articlePostRequest.getTheme();
+            List<String> themeTitleList = themeRepository.findAll().stream().map(ThemeEntity::getTitle).collect(Collectors.toList());
+            for (String theme : themeTitleList) {
+                if (theme.equalsIgnoreCase(themeTitle)) {
+                    themeEntity = themeRepository.findByTitle(theme).orElse(null);
+                    articleEntity.setTheme(themeEntity);
+                    break;
+                }
+            }
+        }
+        return themeEntity;
     }
 }
