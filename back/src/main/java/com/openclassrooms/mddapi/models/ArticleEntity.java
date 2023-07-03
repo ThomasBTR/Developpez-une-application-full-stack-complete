@@ -31,7 +31,7 @@ public class ArticleEntity {
     private Instant date;
 
     @ManyToOne
-    @JoinColumn(name = "theme_id", insertable = false)
+    @JoinColumn(name = "theme_id", updatable = false)
     private ThemeEntity theme;
 
 

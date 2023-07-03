@@ -30,7 +30,8 @@ public class ThemeEntity {
 
     @OneToMany(
             mappedBy = "theme",
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
     )
     private List<ArticleEntity> articleEntities;
 }

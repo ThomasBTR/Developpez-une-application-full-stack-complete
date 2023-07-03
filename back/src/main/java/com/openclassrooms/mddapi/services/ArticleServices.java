@@ -13,21 +13,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class ArticleServices {
 
     private final IArticleRepository articleRepository;
-    private ICommentRepository commentRepository;
-    private final IThemeRepository themeRepository;
+    private final ICommentRepository commentRepository;
 
-    public ArticleServices(IArticleRepository articleRepository, ICommentRepository commentRepository,
-                           IThemeRepository iThemeRepository) {
+    private ThemeServices themeServices;
+
+    public ArticleServices(IArticleRepository articleRepository, ICommentRepository commentRepository, ThemeServices themeServices) {
         this.articleRepository = articleRepository;
         this.commentRepository = commentRepository;
-        this.themeRepository = iThemeRepository;
+        this.themeServices = themeServices;
     }
 
     @Transactional
@@ -57,6 +56,7 @@ public class ArticleServices {
         return articleDto;
     }
 
+    @Transactional
     public CommentDto addComment(Long articleId, CommentDto commentDto) {
         CommentDto response = new CommentDto();
         try {
@@ -66,7 +66,7 @@ public class ArticleServices {
                 comment.setArticleEntity(articleEntity);
                 comment = commentRepository.save(comment);
                 articleEntity.getComments().add(comment);
-                articleEntity = articleRepository.save(articleEntity);
+                articleEntity = saveArticle(articleEntity);
                 response = ICommentToDtoMapper.INSTANCE.commentToCommentDto(articleEntity.getComments().get(articleEntity.getComments().size() - 1));
             }
         } catch (Exception e) {
@@ -75,6 +75,7 @@ public class ArticleServices {
         return response;
     }
 
+    @Transactional
     public ArticleDto createArticle(ArticlePostRequest articlePostRequest) {
         ArticleDto response = new ArticleDto();
         try {
@@ -85,9 +86,14 @@ public class ArticleServices {
         return response;
     }
 
+    @Transactional
+    public ArticleEntity saveArticle(ArticleEntity articleEntity) {
+        return articleRepository.save(articleEntity);
+    }
+
     private ArticleDto createAndSaveArticle(ArticlePostRequest articlePostRequest) {
         ArticleEntity articleEntity = getArticleEntity(articlePostRequest);
-        ThemeEntity themeEntity = handleTheme(articlePostRequest, articleEntity);
+        ThemeEntity themeEntity = themeServices.handleTheme(articlePostRequest, articleEntity);
         return saveArticleAndReturnResponse(articleEntity, themeEntity);
     }
 
@@ -97,26 +103,10 @@ public class ArticleServices {
         return articleEntity;
     }
 
-    private ThemeEntity handleTheme(ArticlePostRequest articlePostRequest, ArticleEntity articleEntity) {
-        ThemeEntity themeEntity = null;
-        if (articlePostRequest.getTheme() != null) {
-            String themeTitle = articlePostRequest.getTheme();
-            List<String> themeTitleList = themeRepository.findAll().stream().map(ThemeEntity::getTitle).collect(Collectors.toList());
-            for (String theme : themeTitleList) {
-                if (theme.equalsIgnoreCase(themeTitle)) {
-                    themeEntity = themeRepository.findByTitle(theme).orElse(null);
-                    articleEntity.setTheme(themeEntity);
-                }
-            }
-        }
-        return themeEntity;
-    }
-
     private ArticleDto saveArticleAndReturnResponse(ArticleEntity articleEntity, ThemeEntity themeEntity) {
-        articleEntity = articleRepository.save(articleEntity);
+        articleEntity = saveArticle(articleEntity);
         themeEntity.getArticleEntities().add(articleEntity);
-        themeRepository.save(themeEntity);
+        themeEntity = themeServices.saveTheme(themeEntity);
         return IArticleToArticleDtoMapper.INSTANCE.articleEntityToArticleResponse(articleEntity);
     }
-
 }
