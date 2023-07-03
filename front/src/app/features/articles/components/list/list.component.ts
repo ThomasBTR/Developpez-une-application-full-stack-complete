@@ -16,7 +16,6 @@ export class ListComponent {
 
   public articles$: Observable<Article[]> = this.sessionApiService.getAllArticles();
   public orderByList: OrderBy[] | undefined;
-  public articleList: Article[] | undefined;
 
   constructor(
     private sessionService: SessionService,
