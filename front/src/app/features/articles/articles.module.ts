@@ -12,6 +12,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import localeFr from '@angular/common/locales/fr';
 import {ListComponent} from "./components/list/list.component";
 import {ArticlesRoutingModule} from "./articles-routing.module";
+import {CreateComponent} from "./components/create/create.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 registerLocaleData(localeFr);
@@ -28,14 +30,16 @@ const materialModules = [
 
 @NgModule({
   declarations: [
-    ListComponent
+    ListComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     ArticlesRoutingModule,
-    ...materialModules
+    ...materialModules,
+    MatDialogModule
   ]
 })
 export class ArticlesModule {

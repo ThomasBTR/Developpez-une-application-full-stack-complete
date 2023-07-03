@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Article} from "../interfaces/article.interface";
 import {Comment} from "../interfaces/comment.interface";
+import {CreateInterface} from "../interfaces/create.interface";
 
 
 @Injectable({
@@ -25,5 +26,9 @@ export class ArticlesApiService {
 
   public postComment(articleId: string, comment: Comment): Observable<Comment> {
     return this.httpClient.post<Comment>(`${this.pathService}/${articleId}/comment`, comment);
+  }
+
+  postArticle(formArticle: CreateInterface) : Observable<Article> {
+    return this.httpClient.post<Article>(`${this.pathService}`, formArticle);
   }
 }

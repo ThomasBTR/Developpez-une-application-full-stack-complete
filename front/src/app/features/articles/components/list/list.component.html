@@ -1,4 +1,9 @@
-<div class="container flex">
+<div class="container flex flex-col">
+  <div class="grid grid-cols-3">
+    <div>
+      <button class="flex" mat-raised-button color="primary" (click)="add()">Créer un article</button>
+    </div>
+  </div>
   <div class="grid flex-wrap grid-cols-2 gap-8 m-10">
     <mat-card class="justify-center item" *ngFor="let article of (articles$ | async)">
       <mat-card-header>

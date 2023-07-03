@@ -4,7 +4,7 @@ import {SessionService} from "../../../../services/session.service";
 import {Observable} from "rxjs";
 import {Article} from "../../interfaces/article.interface";
 import {ArticlesApiService} from "../../services/articles-api.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-list',
@@ -19,9 +19,14 @@ export class ListComponent {
     private sessionService: SessionService,
     private sessionApiService: ArticlesApiService,
     private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   get user(): SessionInformation | undefined {
     return this.sessionService.sessionInformation;
+  }
+
+  add() {
+    this.router.navigate(['/articles/create']);
   }
 }

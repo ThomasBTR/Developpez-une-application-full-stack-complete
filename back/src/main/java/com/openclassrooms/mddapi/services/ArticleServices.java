@@ -105,8 +105,6 @@ public class ArticleServices {
 
     private ArticleDto saveArticleAndReturnResponse(ArticleEntity articleEntity, ThemeEntity themeEntity) {
         articleEntity = saveArticle(articleEntity);
-        themeEntity.getArticleEntities().add(articleEntity);
-        themeEntity = themeServices.saveTheme(themeEntity);
         return IArticleToArticleDtoMapper.INSTANCE.articleEntityToArticleResponse(articleEntity);
     }
 }
