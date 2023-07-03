@@ -1,7 +1,15 @@
 <div class="container flex flex-col">
-  <div class="grid grid-cols-3">
-    <div>
+  <div class="grid grid-cols-2 pt-10">
+    <div class="flex flex-row ml-10">
       <button class="flex" mat-raised-button color="primary" (click)="add()">Créer un article</button>
+    </div>
+    <div class="flex flex-row-reverse mr-10">
+      <button mat-button [matMenuTriggerFor]="orderBy">Trier par</button>
+      <mat-menu #orderBy="matMenu">
+        <button mat-menu-item *ngFor="let item of orderByList" (click)="orderArticlesBy(item.menuLinkText)">
+          {{ item.menuLinkText }}
+        </button>
+      </mat-menu>
     </div>
   </div>
   <div class="grid flex-wrap grid-cols-2 gap-8 m-10">

@@ -14,6 +14,7 @@ import {ListComponent} from "./components/list/list.component";
 import {ArticlesRoutingModule} from "./articles-routing.module";
 import {CreateComponent} from "./components/create/create.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 registerLocaleData(localeFr);
@@ -33,14 +34,15 @@ const materialModules = [
     ListComponent,
     CreateComponent
   ],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    ArticlesRoutingModule,
-    ...materialModules,
-    MatDialogModule
-  ]
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        ArticlesRoutingModule,
+        ...materialModules,
+        MatDialogModule,
+        MatMenuModule
+    ]
 })
 export class ArticlesModule {
 }
