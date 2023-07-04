@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
   public articles$: Observable<Article[]> = this.sessionApiService.getAllArticles();
   public orderByList: OrderBy[] | undefined;
   private userInfo: User | undefined;
-  private themeList: String[] | undefined;
+  private themeList: string[] | undefined;
 
   constructor(
     private sessionService: SessionService,
