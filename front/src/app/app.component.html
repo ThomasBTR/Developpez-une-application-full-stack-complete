@@ -1,27 +1,50 @@
-<div class="md:container md:mx-auto md:px-2 md:0justify-items-center">
+<mat-drawer-container class="example-container md:container md:mx-auto md:px-2 md:justify-items-center lg:hidden"
+                      >
   <mat-toolbar *ngIf="$isLogged() | async" class="header flex flex-col md:flex md:flex-row flex-1">
     <div class="flex">
       <img src="../assets/logo_p6.png" class="flex  min-h-fit max-h-20 w-50 text-3xl" alt="logo">
-      <!--      <button mat-icon-button [routerLink]="'/'" class="">-->
-      <!--        <mat-icon svgIcon="logo" class="mat-icon-button"></mat-icon>-->
-      <!--      </button>-->
     </div>
     <div class="flex-auto">
       <span></span>
     </div>
-    <div class="">
+    <div class="flex max-lg:hidden">
       <button mat-button routerLink="/articles" class="">Articles</button>
     </div>
-    <div class="">
+    <div class="flex max-lg:hidden">
       <button mat-button routerLink="/themes" class="">Themes</button>
     </div>
-    <div class="">
+    <div class="flex max-lg:hidden">
       <button mat-button routerLink="/me" class="">
         <img src="../assets/user_logo.svg" class="flex  min-h-fit max-h-12 w-12 text-xl" alt="user">
       </button>
     </div>
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end" disableClose="false">
+      <div class="grid  grid-rows-10">
+        <div class="grid grid-rows-1">
+          <button mat-button routerLink="/articles" class="">Articles</button>
+        </div>
+        <div class="grid grid-rows-1">
+          <button mat-button routerLink="/themes" class="">Themes</button>
+        </div>
+        <div class="grid grid-rows-7">
+          <a> </a>
+        </div>
+        <div class="grid grid-rows-1">
+          <button mat-button routerLink="/me" class="">
+            <img src="../assets/user_logo.svg" class="flex  min-h-fit max-h-12 w-12 text-xl" alt="user">
+          </button>
+        </div>
+      </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content lg:hidden">
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button>
+    </div>
   </mat-toolbar>
+
   <div>
     <router-outlet></router-outlet>
   </div>
-</div>
+</mat-drawer-container>

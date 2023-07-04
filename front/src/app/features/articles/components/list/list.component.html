@@ -1,10 +1,14 @@
 <div class="container flex flex-col">
-  <div class="grid grid-cols-2 pt-10">
-    <div class="flex flex-row ml-10">
+  <div class="grid grid-rows-2 gap-2.5 justify-items-center lg:grid-cols-2 pt-10">
+    <div class="flex lg:flex-row lg:ml-10">
       <button class="flex" mat-raised-button color="primary" (click)="add()">Créer un article</button>
     </div>
-    <div class="flex flex-row-reverse mr-10">
-      <button mat-button [matMenuTriggerFor]="orderBy">Trier par</button>
+    <div class="flex lg:flex-row-reverse lg:mr-10">
+      <button mat-button [matMenuTriggerFor]="orderBy">
+        <span>Trier par  </span>
+        <mat-icon>arrow_downward</mat-icon>
+      </button>
+
       <mat-menu #orderBy="matMenu">
         <button mat-menu-item *ngFor="let item of orderByList" (click)="orderArticlesBy(item.menuLinkText)">
           {{ item.menuLinkText }}
@@ -12,10 +16,10 @@
       </mat-menu>
     </div>
   </div>
-  <div class="grid flex-wrap grid-cols-2 gap-8 m-10">
+  <div class="grid flex-wrap grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8 m-10 lg:m-10">
     <mat-card class="justify-center item" *ngFor="let article of (articles$ | async)">
       <mat-card-header>
-        <mat-card-title class="">{{ article.title }}</mat-card-title>
+        <mat-card-title class="text-xl lg:text-5xl">{{ article.title }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="grid grid-cols-2 ">
@@ -27,8 +31,8 @@
           </div>
         </div>
         <mat-card-actions>
-            <a [routerLink]="['detail', article.id]"
-                            class="text-ellipsis text-justify overflow-hidden h-20">
+          <a [routerLink]="['detail', article.id]"
+             class="flex text-ellipsis text-justify overflow-hidden h-10 lg:h-20">
             {{ article.content }}
           </a>
         </mat-card-actions>

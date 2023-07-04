@@ -20,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import { DetailComponent } from './features/articles/components/detail/detail.component';
 import {MatDividerModule} from "@angular/material/divider";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 const materialModule = [
   MatButtonModule,
@@ -27,6 +28,14 @@ const materialModule = [
   MatIconModule,
   MatSnackBarModule,
   MatToolbarModule,
+  MatSidenavModule,
+  MatDialogModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatDividerModule,
+  MatInputModule,
+  MatFormFieldModule,
 ]
 
 @NgModule({
@@ -42,16 +51,10 @@ const materialModule = [
         BrowserAnimationsModule,
         FlexLayoutModule,
         HttpClientModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatButtonModule,
         ...materialModule,
-        MatInputModule,
-        MatFormFieldModule,
         FormsModule,
-        MatDialogModule,
         ReactiveFormsModule,
-        MatDividerModule
+
     ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

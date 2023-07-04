@@ -1,5 +1,5 @@
 <div class="container flex">
-  <div class="grid flex-wrap grid-cols-2 gap-4 m-3">
+  <div class="grid flex-wrap grid-cols-1 lg:grid-cols-2 gap-2.5 lg:gap-4 m-3">
     <mat-card class="justify-center item" *ngFor="let theme of (themes$ | async)">
       <mat-card-header>
         <mat-card-title class="w-12">{{ theme.title }}</mat-card-title>
