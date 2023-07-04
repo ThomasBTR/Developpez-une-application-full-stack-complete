@@ -9,13 +9,24 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * The type User details service.
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-  @Autowired
+    /**
+     * The User repository.
+     */
+    @Autowired
   UserRepository userRepository;
 
-  UserDetailsServiceImpl(UserRepository userRepository) {
+    /**
+     * Instantiates a new User details service.
+     *
+     * @param userRepository the user repository
+     */
+    UserDetailsServiceImpl(UserRepository userRepository) {
     this.userRepository = userRepository;
   }
 

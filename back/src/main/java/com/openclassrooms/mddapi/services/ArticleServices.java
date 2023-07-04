@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The type Article services.
+ */
 @Service
 public class ArticleServices {
 
@@ -22,12 +25,24 @@ public class ArticleServices {
 
     private final ThemeServices themeServices;
 
+    /**
+     * Instantiates a new Article services.
+     *
+     * @param articleRepository the article repository
+     * @param commentRepository the comment repository
+     * @param themeServices     the theme services
+     */
     public ArticleServices(IArticleRepository articleRepository, ICommentRepository commentRepository, ThemeServices themeServices) {
         this.articleRepository = articleRepository;
         this.commentRepository = commentRepository;
         this.themeServices = themeServices;
     }
 
+    /**
+     * Gets articles.
+     *
+     * @return the articles
+     */
     @Transactional
     public List<ArticleDto> getArticles() {
         List<ArticleDto> response = new ArrayList<>();
@@ -41,6 +56,12 @@ public class ArticleServices {
         return response;
     }
 
+    /**
+     * Gets article.
+     *
+     * @param articleId the article id
+     * @return the article
+     */
     @Transactional
     public ArticleDto getArticle(Long articleId) {
         ArticleDto articleDto = new ArticleDto();
@@ -55,6 +76,13 @@ public class ArticleServices {
         return articleDto;
     }
 
+    /**
+     * Add comment comment dto.
+     *
+     * @param articleId  the article id
+     * @param commentDto the comment dto
+     * @return the comment dto
+     */
     @Transactional
     public CommentDto addComment(Long articleId, CommentDto commentDto) {
         CommentDto response = new CommentDto();
@@ -74,6 +102,12 @@ public class ArticleServices {
         return response;
     }
 
+    /**
+     * Create article article dto.
+     *
+     * @param articlePostRequest the article post request
+     * @return the article dto
+     */
     @Transactional
     public ArticleDto createArticle(ArticlePostRequest articlePostRequest) {
         ArticleDto response = new ArticleDto();
@@ -85,6 +119,12 @@ public class ArticleServices {
         return response;
     }
 
+    /**
+     * Save article article entity.
+     *
+     * @param articleEntity the article entity
+     * @return the article entity
+     */
     @Transactional
     public ArticleEntity saveArticle(ArticleEntity articleEntity) {
         return articleRepository.save(articleEntity);

@@ -12,6 +12,9 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * The type User.
+ */
 @Entity(name = "USERS")
 @Table(name = "USERS", uniqueConstraints = {
     @UniqueConstraint(columnNames = "email")

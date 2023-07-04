@@ -11,12 +11,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The type Theme controller.
+ */
 @RestController
 public class ThemeController implements ThemesApi {
 
 
     private final ThemeServices themeService;
 
+    /**
+     * Instantiates a new Theme controller.
+     *
+     * @param themeService the theme service
+     */
     public ThemeController(ThemeServices themeService) {
         this.themeService = themeService;
     }

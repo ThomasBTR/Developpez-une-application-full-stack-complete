@@ -15,11 +15,22 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type User controller.
+ */
 @RestController
 public class UserController implements UsersApi, UserApi {
 
+    /**
+     * The User services.
+     */
     UserServices userServices;
 
+    /**
+     * Instantiates a new User controller.
+     *
+     * @param userServices the user services
+     */
     UserController(UserServices userServices) {
         this.userServices = userServices;
     }

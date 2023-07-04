@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * The type Auth controller.
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class AuthController implements AuthApi {
@@ -25,6 +28,14 @@ public class AuthController implements AuthApi {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
+    /**
+     * Instantiates a new Auth controller.
+     *
+     * @param authenticationManager the authentication manager
+     * @param passwordEncoder       the password encoder
+     * @param jwtUtils              the jwt utils
+     * @param userRepository        the user repository
+     */
     AuthController(AuthenticationManager authenticationManager,
                    PasswordEncoder passwordEncoder,
                    JwtUtils jwtUtils,

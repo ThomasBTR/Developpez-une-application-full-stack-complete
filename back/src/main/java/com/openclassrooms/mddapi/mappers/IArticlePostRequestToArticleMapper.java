@@ -6,11 +6,23 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * The interface Article post request to article mapper.
+ */
 @Mapper
 public interface IArticlePostRequestToArticleMapper {
 
+    /**
+     * The constant INSTANCE.
+     */
     IArticlePostRequestToArticleMapper INSTANCE = Mappers.getMapper(IArticlePostRequestToArticleMapper.class);
 
+    /**
+     * Article post request to article entity article entity.
+     *
+     * @param articlePostRequest the article post request
+     * @return the article entity
+     */
     @Mapping(target = "comments", ignore = true)
     @Mapping(target = "theme.title", source = "theme")
     @Mapping(target = "date", ignore = true)

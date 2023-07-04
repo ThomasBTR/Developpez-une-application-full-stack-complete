@@ -7,6 +7,9 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.List;
 
+/**
+ * The type Article entity.
+ */
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +25,9 @@ public class ArticleEntity {
     private String title;
     @Column(name = "content")
     private String content;
+    /**
+     * The Author.
+     */
     @Column(name = "author")
     String author;
 

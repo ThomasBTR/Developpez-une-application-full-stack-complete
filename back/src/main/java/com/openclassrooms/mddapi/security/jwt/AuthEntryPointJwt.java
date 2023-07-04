@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Auth entry point jwt.
+ */
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
