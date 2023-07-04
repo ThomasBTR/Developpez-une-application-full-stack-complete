@@ -83,6 +83,10 @@ Pour lancer le projet front, il vous suffit de lancer la commande :
  npm start
  ````
 
+## API Documentation
+
+L'API est documentée avec Open API. Pour y accéder, il vous suffit de [cliquer ici](https://app.swaggerhub.com/apis/THOMATITO971/mdd-application_api/1.0.0)
+
 ## Découpage du projet
 
 ## Partie Front
