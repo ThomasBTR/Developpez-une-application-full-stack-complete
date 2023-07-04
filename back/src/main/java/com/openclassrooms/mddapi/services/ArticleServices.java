@@ -6,7 +6,6 @@ import com.openclassrooms.mddapi.mappers.ICommentToDtoMapper;
 import com.openclassrooms.mddapi.models.*;
 import com.openclassrooms.mddapi.repositories.IArticleRepository;
 import com.openclassrooms.mddapi.repositories.ICommentRepository;
-import com.openclassrooms.mddapi.repositories.IThemeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +20,7 @@ public class ArticleServices {
     private final IArticleRepository articleRepository;
     private final ICommentRepository commentRepository;
 
-    private ThemeServices themeServices;
+    private final ThemeServices themeServices;
 
     public ArticleServices(IArticleRepository articleRepository, ICommentRepository commentRepository, ThemeServices themeServices) {
         this.articleRepository = articleRepository;

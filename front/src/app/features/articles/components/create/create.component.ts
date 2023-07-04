@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Article} from "../../interfaces/article.interface";
 import {FormBuilder, Validators} from "@angular/forms";
 import {User} from "../../../../interfaces/user.interface";
 import {UserService} from "../../../../services/user.service";

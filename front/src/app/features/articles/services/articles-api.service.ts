@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 import {Article} from "../interfaces/article.interface";
 import {Comment} from "../interfaces/comment.interface";
 import {CreateInterface} from "../interfaces/create.interface";

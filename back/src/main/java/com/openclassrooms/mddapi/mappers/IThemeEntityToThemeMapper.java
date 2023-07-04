@@ -1,6 +1,9 @@
 package com.openclassrooms.mddapi.mappers;
 
-import com.openclassrooms.mddapi.models.*;
+import com.openclassrooms.mddapi.models.Subscription;
+import com.openclassrooms.mddapi.models.Theme;
+import com.openclassrooms.mddapi.models.ThemeEntity;
+import com.openclassrooms.mddapi.models.UserThemeInfo;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,12 +1,10 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AuthService} from './features/auth/services/auth.service';
 import {SessionService} from './services/session.service';
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
-import {generateStaticFlexLayoutStyles} from "@angular/flex-layout/server";
-import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-root',

@@ -1,13 +1,10 @@
 package com.openclassrooms.mddapi.mappers;
 
-import com.openclassrooms.mddapi.api.ArticlesApi;
 import com.openclassrooms.mddapi.models.ArticleDto;
 import com.openclassrooms.mddapi.models.ArticleEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-
-import java.util.List;
 
 @Mapper
 public interface IArticleToArticleDtoMapper {

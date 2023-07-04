@@ -80,7 +80,7 @@ public class ThemeServices {
             if (themeEntity != null) {
                 themeEntity.getUserList().removeIf(subscription -> subscription.getId().getUserId().equals(userId));
                 themeRepository.save(themeEntity);
-            };
+            }
             user = userRepository.findById(userId).orElse(null);
             if (user != null) {
                 user.getThemes().removeIf(subscription -> subscription.getId().getThemeId().equals(themeId));
