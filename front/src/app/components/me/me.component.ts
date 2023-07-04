@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { User } from '../../interfaces/user.interface';
-import { SessionService } from '../../services/session.service';
-import { UserService } from '../../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
+import {User} from '../../interfaces/user.interface';
+import {SessionService} from '../../services/session.service';
+import {UserService} from '../../services/user.service';
 import {Subscription} from "../../interfaces/subscription.interface";
 import {ThemesApiService} from "../../features/themes/services/themes-api.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-me',
@@ -16,8 +16,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class MeComponent implements OnInit {
 
   public user: User | undefined;
-  subscriptions : Subscription[] | undefined;
-  public onError : boolean = false;
+  subscriptions: Subscription[] | undefined;
+  public onError: boolean = false;
 
   public form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -45,25 +45,26 @@ export class MeComponent implements OnInit {
     window.history.back();
   }
 
-  unsubscribeOnTheme(themeId : number) {
+  unsubscribeOnTheme(themeId: number) {
     this.themesApiService.unsubscribeOnTheme(themeId, this.sessionService.sessionInformation!.id)
       .subscribe((_: any) => {
-    this.matSnackBar.open('Theme retiré !', 'Close', {duration: 3000});
-    this.ngOnInit();
-  });
+        this.matSnackBar.open('Theme retiré !', 'Close', {duration: 3000});
+        this.ngOnInit();
+      });
   }
 
   updateUser(form: any) {
-    const formUser : User = this.form.value as User;
-    this.userService.update(this.sessionService.sessionInformation!.id, formUser).subscribe( {
-    next: (response : User  ) => {
+    const formUser: User = this.form.value as User;
+    this.userService.update(this.sessionService.sessionInformation!.id, formUser).subscribe({
+      next: (response: User) => {
         this.matSnackBar.open('User updated !', 'Close', {duration: 3000});
         this.user = response;
         this.subscriptions = this.user.subscriptions;
       },
-    error: (error: any) => this.onError = true,
-  });
+      error: (error: any) => this.onError = true,
+    });
   }
+
   public logout(): void {
     this.sessionService.logOut();
     this.router.navigate(['']).then(r => true);
