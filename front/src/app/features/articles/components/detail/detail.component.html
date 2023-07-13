@@ -1,0 +1,64 @@
+<div class="container flex">
+  <mat-card *ngIf="article">
+    <div class="">
+      <mat-card-header>
+        <mat-card-title>
+          <div class="flex p-10 items-center">
+            <div class="flex  col-span-1">
+              <button mat-icon-button (click)="back()">
+                <mat-icon>arrow_back</mat-icon>
+              </button>
+            </div>
+            <div class="flex col-span-2">
+              <div class="m-0" >{{article.title}}</div>
+            </div>
+          </div>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div class="grid grid-cols-3 gap-10">
+            <div>{{article.author}}</div>
+            <div>{{article.date | date:'dd/MM/yyyy'}}</div>
+            <div>{{article.theme}}</div>
+          </div>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{article.content}}</p>
+        <mat-divider [inset]="true" class="m-4"></mat-divider>
+        <div>
+          <h2>Commentaires</h2>
+          <div *ngFor="let comment of comments" class="grid grid-cols-7 gap-4 m-5">
+            <div class="flex justify-end">{{comment.username}}</div>
+            <div class="flex justify-center content-center comment col-span-5">
+              <div>
+                {{comment.content}}
+              </div>
+              <div>
+                <mat-divider></mat-divider>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div *ngIf="user">
+            <h2>Ajouter un commentaire</h2>
+            <form class="grid grid-cols-5 gap-4 m-7" [formGroup]="form" (ngSubmit)="postComment(form)">
+              <div></div>
+              <div class="flex justify-center content-center col-span-3">
+                <mat-form-field appearance="outline" color="primary">
+                  <mat-label>Ecrivez ici votre commentaire</mat-label>
+                  <input matInput formControlName="content" placeholder="Commentaire">
+                </mat-form-field>
+              </div>
+              <div class="flex justify-center content-center" mat-dialog-actions>
+                <button mat-raised-button color="primary" type="submit">
+                  <mat-icon (click)="postComment(form)">send</mat-icon>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
