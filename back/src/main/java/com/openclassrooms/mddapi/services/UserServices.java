@@ -12,15 +12,31 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The type User services.
+ */
 @Service
 public class UserServices {
 
+    /**
+     * The User repository.
+     */
     UserRepository userRepository;
 
+    /**
+     * Instantiates a new User services.
+     *
+     * @param userRepository the user repository
+     */
     UserServices(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Users get list.
+     *
+     * @return the list
+     */
     @Transactional
     public List<UserProfile> usersGet() {
         List<User> users = null;
@@ -34,6 +50,13 @@ public class UserServices {
         return userProfiles;
     }
 
+    /**
+     * Users put user profile.
+     *
+     * @param userUpdate the user update
+     * @param id         the id
+     * @return the user profile
+     */
     @Transactional
     public UserProfile usersPut(UserUpdate userUpdate, Long id) {
         UserProfile userProfile = null;
@@ -58,6 +81,12 @@ public class UserServices {
         return userProfile;
     }
 
+    /**
+     * User id get user profile.
+     *
+     * @param id the id
+     * @return the user profile
+     */
     @Transactional
     public UserProfile userIdGet(Long id) {
         User user = null;

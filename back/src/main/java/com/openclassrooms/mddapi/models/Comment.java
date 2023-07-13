@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * The type Comment.
+ */
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

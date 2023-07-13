@@ -13,11 +13,19 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * The type Article controller.
+ */
 @RestController
 public class ArticleController implements ArticlesApi {
 
     private final ArticleServices articleServices;
 
+    /**
+     * Instantiates a new Article controller.
+     *
+     * @param articleServices the article services
+     */
     public ArticleController(ArticleServices articleServices) {
         this.articleServices = articleServices;
     }

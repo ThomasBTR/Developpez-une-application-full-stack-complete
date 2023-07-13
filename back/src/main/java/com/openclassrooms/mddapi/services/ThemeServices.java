@@ -11,12 +11,22 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The type Theme services.
+ */
 @Service
 public class ThemeServices {
     private final IThemeRepository themeRepository;
     private final UserRepository userRepository;
     private final ISubscriptionRepository subscriptionRepository;
 
+    /**
+     * Instantiates a new Theme services.
+     *
+     * @param themeRepository        the theme repository
+     * @param userRepository         the user repository
+     * @param subscriptionRepository the subscription repository
+     */
     public ThemeServices(IThemeRepository themeRepository,
                          UserRepository userRepository,
                          ISubscriptionRepository subscriptionRepository) {
@@ -26,11 +36,22 @@ public class ThemeServices {
     }
 
 
+    /**
+     * Save theme theme entity.
+     *
+     * @param themeEntity the theme entity
+     * @return the theme entity
+     */
     @Transactional
     public ThemeEntity saveTheme(ThemeEntity themeEntity) {
         return themeRepository.save(themeEntity);
     }
 
+    /**
+     * Gets theme list.
+     *
+     * @return the theme list
+     */
     @Transactional
     public List<Theme> getThemeList() {
         List<Theme> themesDTO = null;
@@ -45,6 +66,12 @@ public class ThemeServices {
     }
 
 
+    /**
+     * Subscribe to theme.
+     *
+     * @param themeId the theme id
+     * @param userId  the user id
+     */
     @Transactional
     public void subscribeToTheme(Long themeId, Long userId) {
         User user = null;
@@ -71,6 +98,12 @@ public class ThemeServices {
         }
     }
 
+    /**
+     * Unsubscribe from theme.
+     *
+     * @param themeId the theme id
+     * @param userId  the user id
+     */
     @Transactional
     public void unsubscribeFromTheme(Long themeId, Long userId) {
         User user;
@@ -96,6 +129,13 @@ public class ThemeServices {
         }
     }
 
+    /**
+     * Handle theme theme entity.
+     *
+     * @param articlePostRequest the article post request
+     * @param articleEntity      the article entity
+     * @return the theme entity
+     */
     @Transactional
     public ThemeEntity handleTheme(ArticlePostRequest articlePostRequest, ArticleEntity articleEntity) {
         ThemeEntity themeEntity = null;

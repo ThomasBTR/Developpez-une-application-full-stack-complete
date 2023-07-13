@@ -11,6 +11,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 
+/**
+ * The type User details.
+ */
 @Builder
 @AllArgsConstructor
 @Getter
