@@ -91,7 +91,6 @@ public class ArticleServices {
             if (articleEntity != null) {
                 Comment comment = ICommentToDtoMapper.INSTANCE.commentDtoToCommentEntity(commentDto);
                 comment.setArticleEntity(articleEntity);
-                comment = commentRepository.save(comment);
                 articleEntity.getComments().add(comment);
                 articleEntity = saveArticle(articleEntity);
                 response = ICommentToDtoMapper.INSTANCE.commentToCommentDto(articleEntity.getComments().get(articleEntity.getComments().size() - 1));
