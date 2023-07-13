@@ -412,12 +412,15 @@ components:
       properties:
           username:
             type: string
+            example: "Robert"
             x-field-extra-annotation: '@javax.validation.constraints.NotNull'
           email:
             type: string
+            example: "robert@domain.com"
             x-field-extra-annotation: '@javax.validation.constraints.NotNull'
           password:
             type: string
+            example: "Password!2023"
             x-field-extra-annotation: '@javax.validation.constraints.NotNull'
             pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
     SignUpResponse:
@@ -425,13 +428,16 @@ components:
         properties:
             message:
                 type: string
+                example: "Signup successful"
     UserUpdate:
       type: object
       properties:
         username:
           type: string
+          example: "Roberto"
         email:
           type: string
+          example: "roberto@domain.com"
     UserProfileList:
       type: array
       items:
@@ -442,12 +448,16 @@ components:
           id:
             type: integer
             format: int64
+            example: "0"
           username:
             type: string
+            example: "Robert"
           email:
             type: string
+            example: "robert@domain.com"
           password:
             type: string
+            example: "Robert!2023"
           subscriptions:
             type: array
             items:
@@ -457,16 +467,20 @@ components:
       properties:
         username:
           type: string
+          example: "Username"
         email:
           type: string
+          example: "user@domain.com"
     LoginRequest:
       type: object
       properties:
         email:
           type: string
+          example: "username"
           x-field-extra-annotation: '@javax.validation.constraints.NotNull'
         password:
           type: string
+          example: "passworD!2023"
           x-field-extra-annotation: '@javax.validation.constraints.NotNull'
           pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
     JwtResponse:
@@ -474,15 +488,20 @@ components:
       properties:
           jwt:
             type: string
+            example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
           type:
             type: string
+            example: "JWT"
           id:
             type: integer
             format: int64
+            example: 0
           username:
             type: string
+            example: "username"
           email:
             type: string
+            example: "user@domain.com"
     ErrorResponse:
       type: object
       properties:
@@ -491,16 +510,20 @@ components:
           format: int32
         message:
          type: string
+         example: "Error from server"
     Theme:
       type: object
       properties:
         id:
           type: integer
           format: int64
+          example: 0
         title:
           type: string
+          example: "Java"
         description:
           type: string
+          example: "This is a java description example"
         users:
           type: array
           items:
@@ -511,20 +534,26 @@ components:
         id:
           type: integer
           format: int64
+          example: 0
         title:
           type: string
+          example: "Java"
         description:
           type: string
+          example: "This is a theme description exemple"
     UserThemeInfo:
       type: object
       properties:
           id:
             type: integer
             format: int64
+            example: 0
           username:
             type: string
+            example: "username"
           email:
             type: string
+            example: "user@domain.com"
     ThemeListResponse:
       type: array
       items:
@@ -535,3 +564,4 @@ components:
         themeId:
           type: integer
           format: int64
+          example: 0
